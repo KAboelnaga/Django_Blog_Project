@@ -1,0 +1,5 @@
+<h1>{{ post.title }}</h1>
+<img src="{{ post.image.url }}" alt="{{ post.title }}" />
+<p>Category: {{ post.category.name }}</p>
+<p>{{ post.content }}</p>
+<p>Published on: {{ post.created_at|date:"F j, Y" }}</p>

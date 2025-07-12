@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'blogs',
     'comments',
     'users',
-    'fobidden',
+    'forbidden',
     'subscriptions',
 
     'django.contrib.admin',
@@ -61,7 +61,7 @@ ROOT_URLCONF = 'blog_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

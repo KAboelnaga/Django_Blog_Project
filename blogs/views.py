@@ -27,3 +27,7 @@ def posts_by_category(request, category_id):
         'categories': categories,
         'selected_category': category,
     })
+
+def post_detail(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    return render(request, 'blogs/post_detail.html', {'post': post})
