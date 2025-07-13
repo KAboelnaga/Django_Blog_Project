@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blogs.urls')),  # <-- Include blogs app
+    path('subscriptions/', include('subscriptions.urls', namespace='subscriptions')), # <-- Include subscriptions app
 ]
 
 # Serve media in development

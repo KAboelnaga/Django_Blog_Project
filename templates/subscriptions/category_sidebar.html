@@ -1,0 +1,27 @@
+<h3>Categories</h3>
+<ul>
+  {% for category in categories %}
+  <li>
+    <a href="{% url 'blogs:posts_by_category' category.id %}"
+      >{{ category.name }}</a
+    >
+    {% if user.is_authenticated %} {% if category in user.subscriptions.all %}
+    <form
+      method="post"
+      action="{% url 'subscriptions:unsubscribe' category.id %}"
+    >
+      {% csrf_token %}
+      <button>Unsubscribe</button>
+    </form>
+    {% else %}
+    <form
+      method="post"
+      action="{% url 'subscriptions:subscribe' category.id %}"
+    >
+      {% csrf_token %}
+      <button>Subscribe</button>
+    </form>
+    {% endif %} {% endif %}
+  </li>
+  {% endfor %}
+</ul>
