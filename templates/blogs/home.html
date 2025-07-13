@@ -1,0 +1,23 @@
+<style>
+  .post-card img {
+    width: 350px;
+    border-radius: 5px;
+  }
+</style>
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content%}
+{% for post in page_obj %}
+<div class="post-card">
+  <a href="{{ post.get_absolute_url }}">
+    <img src="{{ post.image.url }}" alt="{{ post.title }}" />
+  </a>
+  <h2>{{ post.title }}</h2>
+  <p>{{ post.created_at|date:"F j, Y" }}</p>
+</div>
+{% endfor %}
+
+<!-- Pagination -->
+{% if page_obj.has_previous %}
+<a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+{% endif %} {% if page_obj.has_next %}
+<a href="?page={{ page_obj.next_page_number }}">Next</a>
+{% endif %} {% endblock %}

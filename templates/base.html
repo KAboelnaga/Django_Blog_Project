@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block title %}Django Blog{% endblock %}</title>
+    {% block head %} {% endblock %}
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #f8f9fa;
+        color: #333;
+      }
+
+      header,
+      footer {
+        background-color: #343a40;
+        color: #fff;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      a {
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .container {
+        display: flex;
+        max-width: 1200px;
+        margin: auto;
+        padding: 1rem;
+      }
+
+      aside {
+        width: 20%;
+        background: #fff;
+        padding: 1rem;
+        margin-right: 1rem;
+        border-radius: 6px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      main {
+        width: 80%;
+      }
+
+      .post-card {
+        background: #fff;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        border-radius: 6px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+      }
+
+      .post-card img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+      }
+
+      .pagination {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .pagination a {
+        padding: 0.4rem 0.8rem;
+        background-color: #e9ecef;
+        color: #333;
+        border-radius: 4px;
+      }
+
+      .pagination a:hover {
+        background-color: #ced4da;
+      }
+
+      button {
+        background-color: #007bff;
+        color: white;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: #343a40;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <!-- Login/Register or Logout links -->
+    </header>
+
+    <div class="container">
+      <aside>{% include 'subscriptions/category_sidebar.html' %}</aside>
+
+      <main>{% block content %}{% endblock %}</main>
+    </div>
+
+    <footer>{% block footer %}{% endblock %}</footer>
+  </body>
+</html>
