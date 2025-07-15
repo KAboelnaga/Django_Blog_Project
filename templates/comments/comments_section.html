@@ -1,11 +1,18 @@
-<hr>
+
+
+<div class="card shadow-sm w-100">
+    <div class="card-body">
+   
 <h2 class="mt-4">💬 Comments</h2>
 
 <div class="list-group mt-3">
     {% for comment in comments %}
-        <div class="list-group-item">
-            <p><strong>{{ comment.filtered_content }}</strong></p>
-            <small class="text-muted">{{ reply.CREATED_AT }}</small>
+        <div class="list-group-item mb-3 border rounded">
+            <div >
+                <strong>{{ comment.filtered_content }}</strong> <br>
+                 <small class="text-muted">{{ comment.CREATED_AT }}</small>
+            </div>
+            
             
             <!-- Reply Button -->
             <button class="btn btn-sm btn-outline-primary mt-2"
@@ -24,9 +31,9 @@
 
             <!-- Replies -->
             {% if comment.replies.all %}
-                <div class="ms-4 mt-2 border-start ps-3">
+                <div class="ms-4 mt-2 ps-3">
                     {% for reply in comment.replies.all %}
-                        <div class="bg-light p-2 rounded mt-1">
+                        <div class="bg-light p-2 border rounded  mt-2">
                             <strong>{{ reply.filtered_content }}</strong> <br>
                             <small class="text-muted">{{ reply.CREATED_AT }}</small>
                         </div>
@@ -45,3 +52,7 @@
     {{ form.as_p }}
     <button type="submit" class="btn btn-primary mt-2">Post Comment</button>
 </form>
+
+    </div>
+</div>
+
