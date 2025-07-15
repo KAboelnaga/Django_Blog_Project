@@ -1,58 +1,61 @@
-
-
 <div class="card shadow-sm w-100">
-    <div class="card-body">
-   
-<h2 class="mt-4">💬 Comments</h2>
+  <div class="card-body">
+    <h2 class="mt-4">💬 Comments</h2>
 
-<div class="list-group mt-3">
-    {% for comment in comments %}
-        <div class="list-group-item mb-3 border rounded">
-            <div >
-                <strong>{{ comment.filtered_content }}</strong> <br>
-                 <small class="text-muted">{{ comment.CREATED_AT }}</small>
-            </div>
-            
-            
-            <!-- Reply Button -->
-            <button class="btn btn-sm btn-outline-primary mt-2"
-                onclick="document.getElementById('reply-form-{{ comment.ID }}').classList.toggle('d-none')">
-                ↩ Reply
-            </button>
-
-            <!-- Reply Form -->
-            <div id="reply-form-{{ comment.ID }}" class="mt-2 d-none">
-                <form method="post" action="{% url 'reply_comment' post.id comment.ID %}">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit" class="btn btn-sm btn-primary">Post Reply</button>
-                </form>
-            </div>
-
-            <!-- Replies -->
-            {% if comment.replies.all %}
-                <div class="ms-4 mt-2 ps-3">
-                    {% for reply in comment.replies.all %}
-                        <div class="bg-light p-2 border rounded  mt-2">
-                            <strong>{{ reply.filtered_content }}</strong> <br>
-                            <small class="text-muted">{{ reply.CREATED_AT }}</small>
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
+    <div class="list-group mt-3">
+      {% for comment in comments %}
+      <div class="list-group-item mb-3 border rounded">
+        <div>
+          <strong>{{ comment.filtered_content }}</strong> <br />
+          <small class="text-muted">{{ comment.CREATED_AT }}</small>
         </div>
-    {% empty %}
-        <p class="text-muted">No comments yet.</p>
-    {% endfor %}
-</div>
 
-<h3 class="mt-4">✍ Add a comment</h3>
-<form method="post" action="{% url 'add_comment' post.id %}" class="mt-3">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary mt-2">Post Comment</button>
-</form>
+        <!-- Reply Button -->
+        <button
+          class="btn btn-sm btn-outline-primary mt-2"
+          onclick="document.getElementById('reply-form-{{ comment.ID }}').classList.toggle('d-none')"
+        >
+          ↩ Reply
+        </button>
 
+        <!-- Reply Form -->
+        <div id="reply-form-{{ comment.ID }}" class="mt-2 d-none">
+          <form
+            method="post"
+            action="{% url 'comments:reply_comment' post.id comment.ID %}"
+          >
+            {% csrf_token %} {{ form.as_p }}
+            <button type="submit" class="btn btn-sm btn-primary">
+              Post Reply
+            </button>
+          </form>
+        </div>
+
+        <!-- Replies -->
+        {% if comment.replies.all %}
+        <div class="ms-4 mt-2 ps-3">
+          {% for reply in comment.replies.all %}
+          <div class="bg-light p-2 border rounded mt-2">
+            <strong>{{ reply.filtered_content }}</strong> <br />
+            <small class="text-muted">{{ reply.CREATED_AT }}</small>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      {% empty %}
+      <p class="text-muted">No comments yet.</p>
+      {% endfor %}
     </div>
-</div>
 
+    <h3 class="mt-4">✍ Add a comment</h3>
+    <form
+      method="post"
+      action="{% url 'comments:add_comment' post.id %}"
+      class="mt-3"
+    >
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit" class="btn btn-primary mt-2">Post Comment</button>
+    </form>
+  </div>
+</div>
