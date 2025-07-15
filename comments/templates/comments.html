@@ -1,0 +1,32 @@
+<h2>Comments</h2>
+{% for comment in post.comments.all %}
+  <div>
+    <strong>{{ comment.user.username }}</strong>
+    <small>{{ comment.created_at }}</small>
+    <p>{{ comment.filtered_content }}</p>
+
+    {% if comment.parent == None and user.is_authenticated %}
+      {% if not comment.comment_set.exists %}
+        <a href="{% url 'add_comment' post.id comment.id %}">Reply</a>
+      {% endif %}
+    {% endif %}
+  </div>
+
+  {% if comment.comment_set.all %}
+    <div style="margin-left: 20px;">
+      <strong>{{ comment.comment_set.first.user.username }}</strong>
+      <small>{{ comment.comment_set.first.created_at }}</small>
+      <p>{{ comment.comment_set.first.filtered_content }}</p>
+    </div>
+  {% endif %}
+{% endfor %}
+
+{% if user.is_authenticated %}
+  <form method="post" action="{% url 'add_comment' post.id %}">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Add Comment</button>
+  </form>
+{% else %}
+  <p><a href="{% url 'login' %}">Log in</a> to comment</p>
+{% endif %}
