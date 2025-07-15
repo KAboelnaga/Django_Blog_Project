@@ -4,7 +4,7 @@
 <div class="list-group mt-3">
     {% for comment in comments %}
         <div class="list-group-item">
-            <p><strong>{{ comment.CONTENT }}</strong></p>
+            <p><strong>{{ comment.filtered_content }}</strong></p>
             <small class="text-muted">{{ reply.CREATED_AT }}</small>
             
             <!-- Reply Button -->
@@ -27,7 +27,7 @@
                 <div class="ms-4 mt-2 border-start ps-3">
                     {% for reply in comment.replies.all %}
                         <div class="bg-light p-2 rounded mt-1">
-                            <strong>{{ reply.CONTENT }}</strong> <br>
+                            <strong>{{ reply.filtered_content }}</strong> <br>
                             <small class="text-muted">{{ reply.CREATED_AT }}</small>
                         </div>
                     {% endfor %}
