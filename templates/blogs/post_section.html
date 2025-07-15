@@ -1,0 +1,18 @@
+<div class="card shadow-sm border-0 mb-3 w-100">
+     <h1 class="m-4 card-title text-primary fw-bold">{{ post.title }}</h1>
+    {% if post.image %}
+    <img src="{{ post.image.url }}" 
+         class="card-img-top img-fluid rounded mx-auto d-block"
+         style="max-width: 400px; height: auto;" 
+         alt="{{ post.title }}">
+    {% endif %}
+
+    <div class="card-body">
+     
+      <p class="card-text text-muted">
+        <i class="bi bi-folder"></i>
+        <strong>Category:</strong> {{ post.category.name }}
+      </p>
+      <p class="card-text fs-5">{{ post.content }}</p>
+    </div>
+  </div>

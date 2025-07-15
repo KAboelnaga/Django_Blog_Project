@@ -1,14 +1,45 @@
-{% extends "base.html" %} {% block title %}{{ post.title }}{% endblock %}
-{%block content %}
-<h1>{{ post.title }}</h1>
-<img src="{{ post.image.url }}" alt="{{ post.title }}" />
-<p>{{ post.content }}</p>
-<p>Category: {{ post.category.name }}</p>
+{% extends "base.html" %}
+{% block title %}{{ post.title }}{% endblock %}
 
+{% block content %}
+<div class="container my-5 d-block">
 
-{% include "comments/comments_section.html" %}
+  <!-- Post Section -->
+  {% include "blogs/post_section.html" %}
 
+  <!-- Toolbar -->
+  <div class="d-flex justify-content-around align-items-center  p-3 border rounded shadow-sm bg-light">
+    <button class="btn btn-outline-primary">
+      <i class="bi bi-hand-thumbs-up"></i> Like
+    </button>
+    <button class="btn btn-outline-danger">
+      <i class="bi bi-hand-thumbs-down"></i> Dislike
+    </button>
+    <button class="btn btn-outline-secondary" id="toggle-comments">
+      <i class="bi bi-chat-dots"></i> Comments
+    </button>
+  </div>
+
+  <!-- Comments Section (Initially Hidden) -->
+  <div id="comments-section" class="mt-2" style="display: none;">
+    {% include "comments/comments_section.html" %}
+  </div>
+
+</div>
+
+<!-- Toggle Script -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggleButton = document.getElementById("toggle-comments");
+    const commentsSection = document.getElementById("comments-section");
+
+    toggleButton.addEventListener("click", function () {
+      if (commentsSection.style.display === "none") {
+        commentsSection.style.display = "block";
+      } else {
+        commentsSection.style.display = "none";
+      }
+    });
+  });
+</script>
 {% endblock %}
-
-
-

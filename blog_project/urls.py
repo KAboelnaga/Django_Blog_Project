@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('blogs.urls')),  # <-- Include blogs app
     path('subscriptions/', include('subscriptions.urls', namespace='subscriptions')), # <-- Include subscriptions app
     path('post/<int:post_id>/comment/', include('comments.urls')),
+    path('forbidden/', include('forbidden.urls')),
 
 ]
 

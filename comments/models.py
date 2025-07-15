@@ -17,7 +17,7 @@ class Comment(models.Model):
 
 
     def filtered_content(self):
-        words = self.content.split()
+        words = self.CONTENT.split()
         forbidden = ForbiddenWord.objects.values_list('word', flat=True)
         return ' '.join([
             '*' * len(word) if word.lower() in forbidden else word
