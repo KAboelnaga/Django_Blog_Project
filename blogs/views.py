@@ -1,8 +1,3 @@
-<<<<<<< Updated upstream
-from django.shortcuts import render
-
-# Create your views here.
-=======
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Category
@@ -53,4 +48,3 @@ def post_detail(request, post_id):
         'form': form,  # <-- pass the instance, not the class
     })
    
->>>>>>> Stashed changes
