@@ -20,8 +20,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+     path('admin/', admin.site.urls),
+    path('', include('blogs.urls')),  # <-- Include blogs app
+    path('subscriptions/', include('subscriptions.urls', namespace='subscriptions')), # <-- Include subscriptions app
     path('post/<int:post_id>/comment/', include('comments.urls')),
+
 ]
 
 
