@@ -3,6 +3,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Category
 from comments.forms import CommentForm
 from comments.models import Comment
+from rest_framework import generics, permissions
+from .models import Post
+from .serializers import PostSerializer
 
 def home(request):
     posts = Post.objects.order_by('-created_at')
@@ -47,4 +50,14 @@ def post_detail(request, post_id):
         'comments': comments,
         'form': form,  # <-- pass the instance, not the class
     })
+
+class PostListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Post.objects.all().order_by('-created_at')
+    serializer_class = PostSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class PostDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
    
