@@ -1,8 +1,19 @@
 from django import forms
+from .models import Comment
 
-class CommentForm(forms.Form):
-    content = forms.CharField(
-        widget=forms.Textarea(attrs={'rows': 3}),
-        max_length=500,
-        label='Write your comment'
-    )
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['CONTENT']
+        widgets = {
+            'CONTENT': forms.Textarea(
+                attrs={
+                    'rows': 3,
+                    'class': 'form-control',
+                    'placeholder': 'Write your comment here...',
+                }
+            ),
+        }
+        labels = {
+            'CONTENT': '',
+        }
