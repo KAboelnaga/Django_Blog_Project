@@ -1,0 +1,19 @@
+{% extends 'dashboard/index.html' %}
+{% load static %}
+
+{% block title %}Add Forbidden Word{% endblock %}
+{% block content %}
+<div class="container">
+
+    <h2>Add Forbidden Word</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Word:</label>
+            <input type="text" name="word" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+        <a href="{% url 'forbidden_words_list' %}" class="btn btn-secondary">Back</a>
+    </form>
+</div>
+{% endblock %}

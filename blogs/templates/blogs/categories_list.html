@@ -1,0 +1,31 @@
+{% extends "dashboard/index.html" %}
+{% load static %}
+
+{% block title %}Categories List{% endblock %}
+{% block content %}
+<div class="container mt-4">
+  <h2>Categories</h2>
+  <a href="{% url 'category_create' %}" class="btn btn-success mb-2">Add Category</a>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cat in categories %}
+      <tr>
+        <td>{{ cat.id }}</td>
+        <td>{{ cat.name }}</td>
+        <td>
+          <a href="{% url 'category_update' cat.id %}" class="btn btn-warning btn-sm">Edit</a>
+          <a href="{% url 'category_delete' cat.id %}" class="btn btn-danger btn-sm">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

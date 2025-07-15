@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | AdminLTE</title>
+  <!-- AdminLTE CSS -->
+  <link rel="stylesheet" href="{% static 'adminlte/css/adminlte.min.css' %}">
+  <link rel="stylesheet" href="{% static 'adminlte/plugins/fontawesome-free/css/all.min.css' %}">
+</head>
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <span class="navbar-brand">Dashboard</span>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <a href="/dashboard" class="brand-link">
+        <span class="brand-text font-weight-light">Admin Panel</span>
+      </a>
+      <div class="sidebar">
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview">
+            <li class="nav-item">
+            <a href="{% url 'users_list' %}" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
+                <p>Users</p>
+            </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'posts_list' %}" class="nav-link">
+                <i class="nav-icon fas fa-pencil-alt"></i>
+                <p>Posts</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'categories_list' %}" class="nav-link">
+                <i class="nav-icon fas fa-tags"></i>
+                <p>Categories</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'forbidden_words_list' %}" class="nav-link">
+                <i class="nav-icon fas fa-ban"></i>
+                <p>Forbidden Words</p>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+
+    <div class="content-wrapper p-4">
+      {% block content %}
+      <h1>Welcome to Admin Dashboard</h1>
+      {% endblock %}
+    </div>
+
+  </div>
+
+  <!-- AdminLTE JS -->
+  <script src="{% static 'adminlte/plugins/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'adminlte/js/adminlte.min.js' %}"></script>
+</body>
+</html>
