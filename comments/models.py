@@ -9,7 +9,7 @@ User = get_user_model()
 
 class Comment(models.Model):
     ID=models.AutoField(primary_key=True,editable=False)
-    USER_ID = models.ForeignKey(User, on_delete=models.CASCADE)
+    #USER_ID = models.ForeignKey(User, on_delete=models.CASCADE)
     POST_ID = models.ForeignKey('blogs.Post', on_delete=models.CASCADE, related_name='comments')
     PARENT_COMMENT_ID = models.ForeignKey('self',null=True,blank=True,related_name='replies',on_delete=models.CASCADE)
     CONTENT = models.TextField()

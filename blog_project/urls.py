@@ -16,8 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+<<<<<<< Updated upstream
+=======
+from django.conf import settings
+from django.conf.urls.static import static
+>>>>>>> Stashed changes
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('post/<int:post_id>/comment/', include('comments.urls')),
 ]
+<<<<<<< Updated upstream
+=======
+
+
+# Serve media in development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+>>>>>>> Stashed changes
