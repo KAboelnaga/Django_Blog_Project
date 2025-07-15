@@ -5,7 +5,8 @@
     <a href="{% url 'blogs:posts_by_category' category.id %}"
       >{{ category.name }}</a
     >
-    {% if user.is_authenticated %} {% if category in user.subscriptions.all %}
+    {% if user.is_authenticated %}
+    {% if category.id in user_subscriptions %}
     <form
       method="post"
       action="{% url 'subscriptions:unsubscribe' category.id %}"
@@ -21,7 +22,8 @@
       {% csrf_token %}
       <button>Subscribe</button>
     </form>
-    {% endif %} {% endif %}
+    {% endif %}
+    {% endif %}
   </li>
   {% endfor %}
 </ul>
