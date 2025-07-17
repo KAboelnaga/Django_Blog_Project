@@ -1,0 +1,707 @@
+[
+{
+    "model": "blogs.category",
+    "pk": 1,
+    "fields": {
+        "name": "Sports"
+    }
+},
+{
+    "model": "blogs.category",
+    "pk": 2,
+    "fields": {
+        "name": "News"
+    }
+},
+{
+    "model": "blogs.category",
+    "pk": 3,
+    "fields": {
+        "name": "Politics"
+    }
+},
+{
+    "model": "blogs.category",
+    "pk": 4,
+    "fields": {
+        "name": "Technology"
+    }
+},
+{
+    "model": "blogs.category",
+    "pk": 5,
+    "fields": {
+        "name": "Art"
+    }
+},
+{
+    "model": "blogs.post",
+    "pk": 1,
+    "fields": {
+        "title": "Egypt Wins African Cup",
+        "image": "post_images/11soccer.600.webp",
+        "content": "Egypt’s national football team claimed victory in the African Cup final after a tense penalty shootout.",
+        "category": 1,
+        "created_at": "2025-07-13T10:58:47Z"
+    }
+},
+{
+    "model": "blogs.post",
+    "pk": 2,
+    "fields": {
+        "title": "Presidential Debate Heats Up",
+        "image": "post_images/images.jpeg",
+        "content": "Candidates exchanged sharp words in the final debate before elections, highlighting major policy differences",
+        "category": 3,
+        "created_at": "2025-07-13T10:59:22Z"
+    }
+},
+{
+    "model": "blogs.post",
+    "pk": 3,
+    "fields": {
+        "title": "AI Breakthrough in Medical Diagnosis",
+        "image": "post_images/ai-in-diagnosis.jpg",
+        "content": "A new AI model can detect over 30 diseases with higher accuracy than traditional diagnostic methods.",
+        "category": 4,
+        "created_at": "2025-07-13T11:01:19Z"
+    }
+},
+{
+    "model": "blogs.post",
+    "pk": 4,
+    "fields": {
+        "title": "Cairo Hosts International Art Fair",
+        "image": "post_images/CH2A8013-1080x720.png",
+        "content": "Artists from over 40 countries are exhibiting their work in this year’s Cairo Art Week.",
+        "category": 5,
+        "created_at": "2025-07-13T11:02:12Z"
+    }
+},
+{
+    "model": "blogs.post",
+    "pk": 5,
+    "fields": {
+        "title": "Breaking News: Cabinet Reshuffle Announced",
+        "image": "post_images/3386891-1398658185.jpg",
+        "content": "The Prime Minister announced a cabinet reshuffle affecting several key ministries.\r\nCategory: News",
+        "category": 2,
+        "created_at": "2025-07-13T11:04:12Z"
+    }
+},
+{
+    "model": "blogs.post",
+    "pk": 6,
+    "fields": {
+        "title": "Local Team Advances to Final",
+        "image": "post_images/Ittihad-Ghariyan.jpg",
+        "content": "Alexandria FC secured a place in the national league final after a thrilling 3–2 win.",
+        "category": 1,
+        "created_at": "2025-07-13T11:05:11Z"
+    }
+},
+{
+    "model": "blogs.post",
+    "pk": 7,
+    "fields": {
+        "title": "Parliament Approves New Tax Law",
+        "image": "post_images/images_1.jpeg",
+        "content": "The new law is expected to streamline business taxes and increase government revenue.",
+        "category": 3,
+        "created_at": "2025-07-13T11:06:06Z"
+    }
+},
+{
+    "model": "blogs.post",
+    "pk": 8,
+    "fields": {
+        "title": "Google Unveils New Search AI",
+        "image": "post_images/20biz-google-sundar-lbtm-videoSixteenByNine3000.jpg",
+        "content": "The new algorithm improves contextual understanding and is expected to launch globally by next month.",
+        "category": 4,
+        "created_at": "2025-07-13T11:06:50Z"
+    }
+},
+{
+    "model": "blogs.post",
+    "pk": 9,
+    "fields": {
+        "title": "Record Rainfall in Upper Egypt",
+        "image": "post_images/images_2.jpeg",
+        "content": "Torrential rains caused flooding in several towns, prompting emergency response efforts.",
+        "category": 2,
+        "created_at": "2025-07-13T11:07:59Z"
+    }
+},
+{
+    "model": "blogs.post",
+    "pk": 10,
+    "fields": {
+        "title": "Modern Arabic Calligraphy Exhibit Opens",
+        "image": "post_images/images_3.jpeg",
+        "content": "The exhibit showcases how modern artists are reinventing Arabic calligraphy for the digital age.",
+        "category": 5,
+        "created_at": "2025-07-13T11:09:50Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 1,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": null,
+        "CONTENT": "gggg",
+        "CREATED_AT": "2025-07-14T20:27:35.167Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 2,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": null,
+        "CONTENT": "helllo every one",
+        "CREATED_AT": "2025-07-14T20:28:21.049Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 3,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": null,
+        "CONTENT": "HELLO",
+        "CREATED_AT": "2025-07-14T20:33:07.349Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 4,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": null,
+        "CONTENT": "HELLO",
+        "CREATED_AT": "2025-07-14T20:41:44.697Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 5,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": null,
+        "CONTENT": "HELLO",
+        "CREATED_AT": "2025-07-14T20:42:03.434Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 6,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": null,
+        "CONTENT": "hi",
+        "CREATED_AT": "2025-07-14T20:42:09.989Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 7,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": null,
+        "CONTENT": "mama",
+        "CREATED_AT": "2025-07-14T20:42:15.884Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 8,
+    "fields": {
+        "POST_ID": 10,
+        "PARENT_COMMENT_ID": null,
+        "CONTENT": "hjkdk",
+        "CREATED_AT": "2025-07-14T20:42:48.726Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 9,
+    "fields": {
+        "POST_ID": 6,
+        "PARENT_COMMENT_ID": null,
+        "CONTENT": "lolo",
+        "CREATED_AT": "2025-07-14T20:43:14.584Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 10,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": 1,
+        "CONTENT": "hoooo hooo",
+        "CREATED_AT": "2025-07-14T21:34:39.568Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 11,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": 1,
+        "CONTENT": "kkll",
+        "CREATED_AT": "2025-07-14T21:34:51.402Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 12,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": 1,
+        "CONTENT": "msmls",
+        "CREATED_AT": "2025-07-14T21:35:34.811Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 13,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": 1,
+        "CONTENT": "sss",
+        "CREATED_AT": "2025-07-14T21:35:46.398Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 14,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": 1,
+        "CONTENT": "sss",
+        "CREATED_AT": "2025-07-14T21:36:12.045Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 15,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": 1,
+        "CONTENT": "haaaaa",
+        "CREATED_AT": "2025-07-14T21:36:23.384Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 16,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": 1,
+        "CONTENT": "sssssssssssssssssssssssss",
+        "CREATED_AT": "2025-07-14T21:36:36.879Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 17,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": 1,
+        "CONTENT": "mamma",
+        "CREATED_AT": "2025-07-14T21:44:08.069Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 18,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": 1,
+        "CONTENT": "3333333",
+        "CREATED_AT": "2025-07-14T21:44:21.701Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 19,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": 1,
+        "CONTENT": "Aloo",
+        "CREATED_AT": "2025-07-14T23:24:32.617Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 20,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": 1,
+        "CONTENT": "ff",
+        "CREATED_AT": "2025-07-14T23:30:26.681Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 21,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": 1,
+        "CONTENT": "fffffffffffff",
+        "CREATED_AT": "2025-07-14T23:30:54.907Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 22,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": 3,
+        "CONTENT": "ddd",
+        "CREATED_AT": "2025-07-14T23:31:24.304Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 23,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": 5,
+        "CONTENT": "hiii",
+        "CREATED_AT": "2025-07-14T23:37:28.244Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 24,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": 5,
+        "CONTENT": "mamaaaa",
+        "CREATED_AT": "2025-07-14T23:37:40.313Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 25,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": null,
+        "CONTENT": "mariammm",
+        "CREATED_AT": "2025-07-14T23:37:56.888Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 26,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": 25,
+        "CONTENT": "lovee",
+        "CREATED_AT": "2025-07-14T23:38:12.104Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 27,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": 25,
+        "CONTENT": "loooo",
+        "CREATED_AT": "2025-07-14T23:48:07.904Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 28,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": null,
+        "CONTENT": "hellllllllllllllllllllllllll",
+        "CREATED_AT": "2025-07-14T23:58:21.021Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 29,
+    "fields": {
+        "POST_ID": 10,
+        "PARENT_COMMENT_ID": null,
+        "CONTENT": "wooowww",
+        "CREATED_AT": "2025-07-14T23:58:52.364Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 30,
+    "fields": {
+        "POST_ID": 6,
+        "PARENT_COMMENT_ID": null,
+        "CONTENT": "great team",
+        "CREATED_AT": "2025-07-15T00:55:10.172Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 31,
+    "fields": {
+        "POST_ID": 6,
+        "PARENT_COMMENT_ID": 30,
+        "CONTENT": "agree",
+        "CREATED_AT": "2025-07-15T00:55:18.499Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 32,
+    "fields": {
+        "POST_ID": 6,
+        "PARENT_COMMENT_ID": 9,
+        "CONTENT": "noo",
+        "CREATED_AT": "2025-07-15T00:55:34.931Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 33,
+    "fields": {
+        "POST_ID": 6,
+        "PARENT_COMMENT_ID": null,
+        "CONTENT": "badd",
+        "CREATED_AT": "2025-07-15T00:55:43.277Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 34,
+    "fields": {
+        "POST_ID": 4,
+        "PARENT_COMMENT_ID": null,
+        "CONTENT": "hi",
+        "CREATED_AT": "2025-07-15T01:05:12.413Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 35,
+    "fields": {
+        "POST_ID": 4,
+        "PARENT_COMMENT_ID": 34,
+        "CONTENT": "no",
+        "CREATED_AT": "2025-07-15T01:05:19.648Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 36,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": null,
+        "CONTENT": "stupid",
+        "CREATED_AT": "2025-07-15T03:04:02.698Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 37,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": null,
+        "CONTENT": "he is so stupid",
+        "CREATED_AT": "2025-07-15T03:04:15.377Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 38,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": 1,
+        "CONTENT": "what a stupid",
+        "CREATED_AT": "2025-07-15T03:04:33.940Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 39,
+    "fields": {
+        "POST_ID": 10,
+        "PARENT_COMMENT_ID": 8,
+        "CONTENT": "hi",
+        "CREATED_AT": "2025-07-15T03:13:18.558Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 40,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": 4,
+        "CONTENT": "fff",
+        "CREATED_AT": "2025-07-15T03:19:25.712Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 41,
+    "fields": {
+        "POST_ID": 7,
+        "PARENT_COMMENT_ID": null,
+        "CONTENT": "Great",
+        "CREATED_AT": "2025-07-15T03:27:07.985Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 42,
+    "fields": {
+        "POST_ID": 7,
+        "PARENT_COMMENT_ID": null,
+        "CONTENT": "wow",
+        "CREATED_AT": "2025-07-15T03:27:25.005Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 43,
+    "fields": {
+        "POST_ID": 7,
+        "PARENT_COMMENT_ID": 41,
+        "CONTENT": "+1",
+        "CREATED_AT": "2025-07-15T03:28:21.465Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 44,
+    "fields": {
+        "POST_ID": 7,
+        "PARENT_COMMENT_ID": 41,
+        "CONTENT": "no",
+        "CREATED_AT": "2025-07-15T03:30:26.607Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 45,
+    "fields": {
+        "POST_ID": 10,
+        "PARENT_COMMENT_ID": null,
+        "CONTENT": "asdasd",
+        "CREATED_AT": "2025-07-15T17:10:07.505Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 46,
+    "fields": {
+        "POST_ID": 10,
+        "PARENT_COMMENT_ID": null,
+        "CONTENT": "asdasd",
+        "CREATED_AT": "2025-07-15T17:30:01.148Z"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 47,
+    "fields": {
+        "POST_ID": 9,
+        "PARENT_COMMENT_ID": 2,
+        "CONTENT": "asdasdasd",
+        "CREATED_AT": "2025-07-15T17:42:09.486Z"
+    }
+},
+{
+    "model": "forbidden.forbiddenword",
+    "pk": 4,
+    "fields": {
+        "word": "stupid"
+    }
+},
+{
+    "model": "subscriptions.subscription",
+    "pk": 6,
+    "fields": {
+        "user": 2,
+        "category": 1,
+        "created_at": "2025-07-15T08:58:09.877Z"
+    }
+},
+{
+    "model": "subscriptions.subscription",
+    "pk": 7,
+    "fields": {
+        "user": 2,
+        "category": 2,
+        "created_at": "2025-07-15T08:58:10.324Z"
+    }
+},
+{
+    "model": "subscriptions.subscription",
+    "pk": 8,
+    "fields": {
+        "user": 2,
+        "category": 3,
+        "created_at": "2025-07-15T08:58:10.759Z"
+    }
+},
+{
+    "model": "subscriptions.subscription",
+    "pk": 9,
+    "fields": {
+        "user": 2,
+        "category": 4,
+        "created_at": "2025-07-15T08:58:11.140Z"
+    }
+},
+{
+    "model": "subscriptions.subscription",
+    "pk": 10,
+    "fields": {
+        "user": 2,
+        "category": 5,
+        "created_at": "2025-07-15T08:58:11.560Z"
+    }
+},
+{
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$dsnG9KYQS6UjWm7a8cu60C$JMipwBuXHrkmnMKyNu+t82oV2qmFSCqeM1xkvb8jtx8=",
+        "last_login": "2025-07-13T06:58:36.507Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-07-13T06:57:51.399Z",
+        "created_at": "2025-07-13T06:57:51.399Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$Q8b9dPtA9Rpp6pxPm0YMHZ$B136G0K50jlaV1qn4og+hoV4NZX9Q8PfDzQXbrWMeLU=",
+        "last_login": "2025-07-15T08:27:25Z",
+        "is_superuser": true,
+        "username": "khalifa",
+        "first_name": "",
+        "last_name": "",
+        "email": "mohamedkhalifa.4053@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-07-15T08:18:37Z",
+        "created_at": "2025-07-13T06:57:51.399Z",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]

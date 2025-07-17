@@ -1,27 +1,27 @@
-<h3>Categories</h3>
-<ul>
-  {% for category in categories %}
-  <li>
-    <a href="{% url 'blogs:posts_by_category' category.id %}"
-      >{{ category.name }}</a
-    >
-    {% if user.is_authenticated %} {% if category in user.subscriptions.all %}
-    <form
-      method="post"
-      action="{% url 'subscriptions:unsubscribe' category.id %}"
-    >
-      {% csrf_token %}
-      <button>Unsubscribe</button>
-    </form>
-    {% else %}
-    <form
-      method="post"
-      action="{% url 'subscriptions:subscribe' category.id %}"
-    >
-      {% csrf_token %}
-      <button>Subscribe</button>
-    </form>
-    {% endif %} {% endif %}
-  </li>
-  {% endfor %}
-</ul>
+{% if user.is_authenticated %}
+<aside class="card shadow-sm border-0">
+    <div class="card-body">
+        <h3 class="card-title h5">Categories</h3>
+        <ul class="list-group list-group-flush">
+            {% for category in categories %}
+            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                <a href="{% url 'blogs:posts_by_category' category.id %}"
+                    class="text-decoration-none text-dark flex-grow-1">{{ category.name }}</a>
+
+                {% if category.id in user_subscriptions %}
+                <form method="post" action="{% url 'subscriptions:unsubscribe' category.id %}" class="ms-2">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-danger btn-sm">Unsubscribe</button>
+                </form>
+                {% else %}
+                <form method="post" action="{% url 'subscriptions:subscribe' category.id %}" class="ms-2">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
+                </form>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</aside>
+{% endif %}

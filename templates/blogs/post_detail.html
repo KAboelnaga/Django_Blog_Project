@@ -33,13 +33,20 @@
     const toggleButton = document.getElementById("toggle-comments");
     const commentsSection = document.getElementById("comments-section");
 
+    function showComments() {
+      commentsSection.style.display = "block";
+    }
+
     toggleButton.addEventListener("click", function () {
-      if (commentsSection.style.display === "none") {
-        commentsSection.style.display = "block";
-      } else {
-        commentsSection.style.display = "none";
-      }
+      commentsSection.style.display =
+        commentsSection.style.display === "none" ? "block" : "none";
     });
+
+    // ✅ Auto-open comments if ?show_comments=true is in the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("show_comments") === "true") {
+      showComments();
+    }
   });
 </script>
 {% endblock %}

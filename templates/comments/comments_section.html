@@ -1,58 +1,112 @@
-
-
 <div class="card shadow-sm w-100">
-    <div class="card-body">
-   
-<h2 class="mt-4">💬 Comments</h2>
+  <div class="card-body">
+    <h2 class="mt-4">💬 Comments</h2>
 
-<div class="list-group mt-3">
-    {% for comment in comments %}
-        <div class="list-group-item mb-3 border rounded">
-            <div >
-                <strong>{{ comment.filtered_content }}</strong> <br>
-                 <small class="text-muted">{{ comment.CREATED_AT }}</small>
-            </div>
-            
-            
-            <!-- Reply Button -->
-            <button class="btn btn-sm btn-outline-primary mt-2"
-                onclick="document.getElementById('reply-form-{{ comment.ID }}').classList.toggle('d-none')">
-                ↩ Reply
-            </button>
+    <div class="list-group mt-3">
+      {% for comment in comments %}
+      <div class="list-group-item mb-3 border rounded">
+        <div class="d-flex align-items-center">
+          <!-- User Icon -->
+          <i class="bi bi-person-circle fs-4 me-2"></i>
 
-            <!-- Reply Form -->
-            <div id="reply-form-{{ comment.ID }}" class="mt-2 d-none">
-                <form method="post" action="{% url 'reply_comment' post.id comment.ID %}">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit" class="btn btn-sm btn-primary">Post Reply</button>
-                </form>
-            </div>
-
-            <!-- Replies -->
-            {% if comment.replies.all %}
-                <div class="ms-4 mt-2 ps-3">
-                    {% for reply in comment.replies.all %}
-                        <div class="bg-light p-2 border rounded  mt-2">
-                            <strong>{{ reply.filtered_content }}</strong> <br>
-                            <small class="text-muted">{{ reply.CREATED_AT }}</small>
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
+          <!-- Username & Date -->
+          <div>
+            <strong>{{ comment.USER.username }}</strong><br>
+            <small class="text-muted">
+              {{ comment.CREATED_AT|date:"M d, Y H:i" }} 
+              <!-- Example: Jul 16, 2025 14:35 -->
+            </small>
+          </div>
         </div>
-    {% empty %}
-        <p class="text-muted">No comments yet.</p>
-    {% endfor %}
-</div>
 
-<h3 class="mt-4">✍ Add a comment</h3>
-<form method="post" action="{% url 'add_comment' post.id %}" class="mt-3">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary mt-2">Post Comment</button>
-</form>
+        <!-- Comment Content -->
+        <div class="mt-2 p-3 bg-light border-start border-primary rounded d-flex align-items-center justify-content-between">
+          <p class="mb-0 fw-semibold text-dark">
+            {{ comment.filtered_content }}
+          </p>
+          <!-- Reply Button --> 
+          <button
+            class="btn btn-sm btn-primary d-flex align-items-center shadow-sm rounded-pill px-3"
+            style="transition: 0.3s ease;"
+            onmouseover="this.style.backgroundColor='#0b5ed7'"
+            onmouseout="this.style.backgroundColor='#0d6efd'"
+            onclick="document.getElementById('reply-form-{{ comment.ID }}').classList.toggle('d-none')"
+          >
+            <i class="bi bi-reply-fill me-1"></i> Reply
+          </button>
+        </div>
 
+        
+
+        <!-- Reply Form -->
+        <div id="reply-form-{{ comment.ID }}" class="mt-4 d-none">
+          {% if user.is_authenticated %}
+          <form
+            method="post"
+            action="{% url 'comments:reply_comment' post.id comment.ID %}"
+          >
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-sm btn-primary">
+              Post Reply
+            </button>
+          </form>
+          {% else %}
+           <div class="alert alert-warning mt-3">
+      🔒    You must <a href="{% url 'users:login' %}?next={{ request.path }}">log in</a> to reply to a comment.
+          </div>
+          {% endif%}
+        </div>
+
+        <!-- Replies -->
+        {% if comment.replies.all %}
+        <div class="ms-4 mt-2 ps-3 border-start">
+          {% for reply in comment.replies.all %}
+          <div class="bg-light p-2 border rounded mt-2">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-person-circle fs-5 me-2"></i>
+              <div>
+                <strong>{{ reply.USER.username }}</strong><br>
+                <small class="text-muted">
+                  {{ reply.CREATED_AT|date:"M d, Y H:i" }}
+                </small>
+              </div>
+            </div>
+            <p class="mt-1">{{ reply.filtered_content }}</p>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      {% empty %}
+      <p class="text-muted">No comments yet.</p>
+      {% endfor %}
     </div>
-</div>
 
+    <!-- <h3 class="mt-4">✍ Add a comment</h3>
+    <form method="post" action="{% url 'comments:add_comment' post.id %}" class="mt-3">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary mt-2">Post Comment</button>
+    </form> -->
+
+
+    <h3 class="mt-4">✍ Add a comment</h3>
+    {% if user.is_authenticated %}
+    <form
+      method="post"
+      action="{% url 'comments:add_comment' post.id %}"
+      class="mt-3"
+    >
+      {% csrf_token %} 
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary mt-2">Post Comment</button>
+    </form>
+    {% else %}
+    <div class="alert alert-warning mt-3">
+      🔒 You must <a href="{% url 'users:login' %}?next={{ request.path }}">log in</a> to post a comment.
+    </div>
+    {% endif %}
+
+  </div>
+</div>
