@@ -16,37 +16,31 @@ def users_list(request):
 
 
 def create_user_view(request):
-    form = CustomUserForm()
     if request.method == 'POST':
         form = CustomUserForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data['username']
-            email = form.cleaned_data['email']
-            password = form.cleaned_data['password']
-            confirm_password = form.cleaned_data['confirm_password']
+            form.save()
+            messages.success(request, "User created successfully.")
+            return redirect('users_list')
+    else:
+        form = CustomUserForm()
+    return render(request, 'users/create_user.html', {'form': form})
 
-            if User.objects.filter(username=username).exists():
-                messages.error(request, "Username is already taken.")
-            elif User.objects.filter(email=email).exists():
-                messages.error(request, "Email is already used.")
-            elif password != confirm_password:
-                messages.error(request, "Passwords do not match.")
-            else:
-                user = User(username=username, email=email)
-                user.set_password(password)
-                user.save()
-                messages.success(request, "User created successfully.")
-                return redirect('users_list')
 
     return render(request, 'users/create_user.html', {'form': form})
 def user_edit(request, pk):
     user = get_object_or_404(User, pk=pk)
     if request.method == 'POST':
-        user.email = request.POST.get('email')
-        user.save()
-        messages.success(request, 'User updated successfully!')
-        return redirect('users_list')
+        new_email = request.POST.get('email')
+        if User.objects.exclude(pk=pk).filter(email=new_email).exists():
+            messages.error(request, 'This email is already in use.')
+        else:
+            user.email = new_email
+            user.save()
+            messages.success(request, 'User updated successfully!')
+            return redirect('users_list')
     return render(request, 'users/user_edit.html', {'user': user})
+
 
 def user_delete(request, pk):
     user = get_object_or_404(User, pk=pk)
