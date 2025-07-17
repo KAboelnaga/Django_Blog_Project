@@ -8,17 +8,7 @@
   {% include "blogs/post_section.html" %}
 
   <!-- Toolbar -->
-  <div class="d-flex justify-content-around align-items-center  p-3 border rounded shadow-sm bg-light">
-    <button class="btn btn-outline-primary">
-      <i class="bi bi-hand-thumbs-up"></i> Like
-    </button>
-    <button class="btn btn-outline-danger">
-      <i class="bi bi-hand-thumbs-down"></i> Dislike
-    </button>
-    <button class="btn btn-outline-secondary" id="toggle-comments">
-      <i class="bi bi-chat-dots"></i> Comments
-    </button>
-  </div>
+  {% include "blogs/post_toolbar.html" %}
 
   <!-- Comments Section (Initially Hidden) -->
   <div id="comments-section" class="mt-2" style="display: none;">

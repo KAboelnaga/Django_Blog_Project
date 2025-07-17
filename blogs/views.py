@@ -27,7 +27,7 @@ def posts_by_category(request, category_id):
     page_obj = paginator.get_page(page_number)
     categories = Category.objects.all()
 
-    return render(request, 'blogs/category_posts.html', {
+    return render(request, 'blogs/home.html', {
         'page_obj': page_obj,
         'categories': categories,
         'selected_category': category,
