@@ -55,9 +55,14 @@
         if (elem.classList.contains('vManyToManyRawIdAdminField') && elem.value) {
             elem.value += ',' + chosenId;
         } else {
+<<<<<<< HEAD
             elem.value = chosenId;
         }
         $(elem).trigger('change');
+=======
+            document.getElementById(name).value = chosenId;
+        }
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
         const index = relatedWindows.indexOf(win);
         if (index > -1) {
             relatedWindows.splice(index, 1);
@@ -80,6 +85,7 @@
             siblings.each(function() {
                 const elm = $(this);
                 elm.attr('href', elm.attr('data-href-template').replace('__fk__', value));
+<<<<<<< HEAD
                 elm.removeAttr('aria-disabled');
             });
         } else {
@@ -89,6 +95,15 @@
     }
 
     function updateRelatedSelectsOptions(currentSelect, win, objId, newRepr, newId, skipIds = []) {
+=======
+            });
+        } else {
+            siblings.removeAttr('href');
+        }
+    }
+
+    function updateRelatedSelectsOptions(currentSelect, win, objId, newRepr, newId) {
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
         // After create/edit a model from the options next to the current
         // select (+ or :pencil:) update ForeignKey PK of the rest of selects
         // in the page.
@@ -97,11 +112,19 @@
         // Extract the model from the popup url '.../<model>/add/' or
         // '.../<model>/<id>/change/' depending the action (add or change).
         const modelName = path.split('/')[path.split('/').length - (objId ? 4 : 3)];
+<<<<<<< HEAD
         // Select elements with a specific model reference and context of "available-source".
         const selectsRelated = document.querySelectorAll(`[data-model-ref="${modelName}"] [data-context="available-source"]`);
 
         selectsRelated.forEach(function(select) {
             if (currentSelect === select || skipIds && skipIds.includes(select.id)) {
+=======
+        // Exclude autocomplete selects.
+        const selectsRelated = document.querySelectorAll(`[data-model-ref="${modelName}"] select:not(.admin-autocomplete)`);
+
+        selectsRelated.forEach(function(select) {
+            if (currentSelect === select) {
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
                 return;
             }
 
@@ -110,11 +133,14 @@
             if (!option) {
                 option = new Option(newRepr, newId);
                 select.options.add(option);
+<<<<<<< HEAD
                 // Update SelectBox cache for related fields.
                 if (window.SelectBox !== undefined && !SelectBox.cache[currentSelect.id]) {
                     SelectBox.add_to_cache(select.id, option);
                     SelectBox.redisplay(select.id);
                 }
+=======
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
                 return;
             }
 
@@ -142,6 +168,7 @@
             $(elem).trigger('change');
         } else {
             const toId = name + "_to";
+<<<<<<< HEAD
             const toElem = document.getElementById(toId);
             const o = new Option(newRepr, newId);
             SelectBox.add_to_cache(toId, o);
@@ -150,6 +177,11 @@
                 const skipIds = [name + "_from"];
                 updateRelatedSelectsOptions(toElem, win, null, newRepr, newId, skipIds);
             }
+=======
+            const o = new Option(newRepr, newId);
+            SelectBox.add_to_cache(toId, o);
+            SelectBox.redisplay(toId);
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
         }
         const index = relatedWindows.indexOf(win);
         if (index > -1) {
@@ -206,7 +238,10 @@
     window.dismissChangeRelatedObjectPopup = dismissChangeRelatedObjectPopup;
     window.dismissDeleteRelatedObjectPopup = dismissDeleteRelatedObjectPopup;
     window.dismissChildPopups = dismissChildPopups;
+<<<<<<< HEAD
     window.relatedWindows = relatedWindows;
+=======
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
 
     // Kept for backward compatibility
     window.showAddAnotherPopup = showRelatedObjectPopup;

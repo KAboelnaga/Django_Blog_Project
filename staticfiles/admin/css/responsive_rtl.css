@@ -28,12 +28,29 @@
         margin-left: 0;
     }
 
+<<<<<<< HEAD
+=======
+    [dir="rtl"] .inline-group ul.tools a.add,
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
     [dir="rtl"] .inline-group div.add-row a,
     [dir="rtl"] .inline-group .tabular tr.add-row td a {
         padding: 8px 26px 8px 10px;
         background-position: calc(100% - 8px) 9px;
     }
 
+<<<<<<< HEAD
+=======
+    [dir="rtl"] .related-widget-wrapper-link + .selector {
+        margin-right: 0;
+        margin-left: 15px;
+    }
+
+    [dir="rtl"] .selector .selector-filter label {
+        margin-right: 0;
+        margin-left: 8px;
+    }
+
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
     [dir="rtl"] .object-tools li {
         float: right;
     }
@@ -70,6 +87,7 @@
     [dir="rtl"] .aligned .vCheckboxLabel {
         padding: 1px 5px 0 0;
     }
+<<<<<<< HEAD
 
     [dir="rtl"] .selector-remove {
         background-position: 0 0;
@@ -86,4 +104,6 @@
     [dir="rtl"] :enabled.selector-add:focus, :enabled.selector-add:hover {
         background-position: 0 -72px;
     }
+=======
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
 }

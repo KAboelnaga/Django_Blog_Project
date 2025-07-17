@@ -13,7 +13,11 @@ th {
     margin-right: 1.5em;
 }
 
+<<<<<<< HEAD
 .viewlink, .addlink, .changelink, .hidelink {
+=======
+.viewlink, .addlink, .changelink {
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
     padding-left: 0;
     padding-right: 16px;
     background-position: 100% 1px;
@@ -151,7 +155,10 @@ form ul.inline li {
 
 form .aligned p.help,
 form .aligned div.help {
+<<<<<<< HEAD
     margin-left: 0;
+=======
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
     margin-right: 160px;
     padding-right: 10px;
 }
@@ -165,13 +172,28 @@ form .aligned p.time div.help.timezonewarning {
     padding-right: 0;
 }
 
+<<<<<<< HEAD
 form .wide p.help,
 form .wide ul.errorlist,
 form .wide div.help {
+=======
+form .wide p.help, form .wide div.help {
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
     padding-left: 0;
     padding-right: 50px;
 }
 
+<<<<<<< HEAD
+=======
+form .wide p,
+form .wide ul.errorlist,
+form .wide input + p.help,
+form .wide input + div.help {
+    margin-right: 200px;
+    margin-left: 0px;
+}
+
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
 .submit-row {
     text-align: right;
 }
@@ -197,7 +219,16 @@ fieldset .fieldBox {
     top: 0;
     left: auto;
     right: 10px;
+<<<<<<< HEAD
     background: url(../img/calendar-icons.svg) 0 -15px no-repeat;
+=======
+    background: url(../img/calendar-icons.svg) 0 -30px no-repeat;
+}
+
+.calendarbox .calendarnav-previous:focus,
+.calendarbox .calendarnav-previous:hover {
+    background-position: 0 -45px;
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
 }
 
 .calendarnav-next {
@@ -207,6 +238,14 @@ fieldset .fieldBox {
     background: url(../img/calendar-icons.svg) 0 0 no-repeat;
 }
 
+<<<<<<< HEAD
+=======
+.calendarbox .calendarnav-next:focus,
+.calendarbox .calendarnav-next:hover {
+    background-position: 0 -15px;
+}
+
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
 .calendar caption, .calendarbox h2 {
     text-align: center;
 }
@@ -220,6 +259,7 @@ fieldset .fieldBox {
 }
 
 .selector-add {
+<<<<<<< HEAD
     background: url(../img/selector-icons.svg) 0 -96px no-repeat;
     background-size: 24px auto;
 }
@@ -250,6 +290,36 @@ fieldset .fieldBox {
 }
 
 :enabled.selector-clearall:focus, :enabled.selector-clearall:hover {
+=======
+  background: url(../img/selector-icons.svg) 0 -64px no-repeat;
+}
+
+.active.selector-add:focus, .active.selector-add:hover {
+  background-position: 0 -80px;
+}
+
+.selector-remove {
+  background: url(../img/selector-icons.svg) 0 -96px no-repeat;
+}
+
+.active.selector-remove:focus, .active.selector-remove:hover {
+  background-position: 0 -112px;
+}
+
+a.selector-chooseall {
+    background: url(../img/selector-icons.svg) right -128px no-repeat;
+}
+
+a.active.selector-chooseall:focus, a.active.selector-chooseall:hover {
+    background-position: 100% -144px;
+}
+
+a.selector-clearall {
+    background: url(../img/selector-icons.svg) 0 -160px no-repeat;
+}
+
+a.active.selector-clearall:focus, a.active.selector-clearall:hover {
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
     background-position: 0 -176px;
 }
 
@@ -283,6 +353,7 @@ form .form-row p.datetime {
     margin-left: inherit;
     margin-right: 2px;
 }
+<<<<<<< HEAD
 
 .inline-group .tabular td.original p {
     right: 0;
@@ -291,3 +362,5 @@ form .form-row p.datetime {
 .selector .selector-chooser {
     margin: 0;
 }
+=======
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782

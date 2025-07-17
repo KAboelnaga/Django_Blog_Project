@@ -1,0 +1,21 @@
+{% extends 'dashboard/index.html' %}
+{% load static %}
+
+{% block title %}Edit User{% endblock %}
+{% block content %}
+<div class="container">
+  <h2>Edit User</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label>Username:</label>
+      <input type="text" name="username" value="{{ user.username }}" class="form-control" required>
+      <label>Email:</label>
+      <input type="email" name="email" value="{{ user.email }}" class="form-control" required>
+      
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="{% url 'users_list' %}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}

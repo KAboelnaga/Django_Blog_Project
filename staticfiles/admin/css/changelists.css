@@ -139,12 +139,15 @@
     margin: 0 0 0 30px;
 }
 
+<<<<<<< HEAD
 @media (forced-colors: active) {
   #changelist-filter {
       border: 1px solid;
   }
 }
 
+=======
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
 #changelist-filter h2 {
     font-size: 0.875rem;
     text-transform: uppercase;
@@ -221,9 +224,15 @@
     color: var(--link-hover-color);
 }
 
+<<<<<<< HEAD
 #changelist-filter #changelist-filter-extra-actions {
     font-size: 0.8125rem;
     margin-bottom: 10px;
+=======
+#changelist-filter #changelist-filter-clear a {
+    font-size: 0.8125rem;
+    padding-bottom: 10px;
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
     border-bottom: 1px solid var(--hairline-color);
 }
 
@@ -271,6 +280,7 @@
     background-color: var(--selected-row);
 }
 
+<<<<<<< HEAD
 @media (forced-colors: active) {
     #changelist tbody tr.selected {
         background-color: SelectedItem;
@@ -280,6 +290,8 @@
     }
 }
 
+=======
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
 #changelist .actions {
     padding: 10px;
     background: var(--body-bg);

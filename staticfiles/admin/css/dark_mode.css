@@ -5,8 +5,12 @@
   
       --body-fg: #eeeeee;
       --body-bg: #121212;
+<<<<<<< HEAD
       --body-quiet-color: #d0d0d0;
       --body-medium-color: #e0e0e0;
+=======
+      --body-quiet-color: #e0e0e0;
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
       --body-loud-color: #ffffff;
   
       --breadcrumbs-link-fg: #e0e0e0;
@@ -30,8 +34,11 @@
   
       --close-button-bg: #333333;
       --close-button-hover-bg: #666666;
+<<<<<<< HEAD
 
       color-scheme: dark;
+=======
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
     }
   }
 
@@ -42,8 +49,12 @@ html[data-theme="dark"] {
 
     --body-fg: #eeeeee;
     --body-bg: #121212;
+<<<<<<< HEAD
     --body-quiet-color: #d0d0d0;
     --body-medium-color: #e0e0e0;
+=======
+    --body-quiet-color: #e0e0e0;
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
     --body-loud-color: #ffffff;
 
     --breadcrumbs-link-fg: #e0e0e0;
@@ -67,8 +78,11 @@ html[data-theme="dark"] {
 
     --close-button-bg: #333333;
     --close-button-hover-bg: #666666;
+<<<<<<< HEAD
 
     color-scheme: dark;
+=======
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
 }
 
 /* THEME SWITCH */
@@ -84,8 +98,13 @@ html[data-theme="dark"] {
 
 .theme-toggle svg {
     vertical-align: middle;
+<<<<<<< HEAD
     height: 1.5rem;
     width: 1.5rem;
+=======
+    height: 1rem;
+    width: 1rem;
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
     display: none;
 }
 
@@ -128,3 +147,19 @@ html[data-theme="dark"] .theme-toggle svg.theme-icon-when-dark {
 html[data-theme="light"] .theme-toggle svg.theme-icon-when-light {
     display: block;
 }
+<<<<<<< HEAD
+=======
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+    color: var(--body-fg);
+    background-color: var(--body-bg);
+}
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782

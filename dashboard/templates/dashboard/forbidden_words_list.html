@@ -1,0 +1,19 @@
+{% extends 'dashboard/index.html' %}
+{% load static %}
+
+{% block title %}Forbidden Words List{% endblock %}
+{% block content %}
+<div class="container"> 
+
+    <h2>Forbidden Words</h2>
+    <a href="{% url 'add_forbidden_word' %}" class="btn btn-success mb-3">Add Forbidden Word</a>
+    <ul class="list-group">
+        {% for word in words %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ word.word }}
+            <a href="{% url 'delete_forbidden_word' word.id %}" class="btn btn-danger btn-sm">Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

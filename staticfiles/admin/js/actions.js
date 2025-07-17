@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /*global gettext, interpolate, ngettext, Actions*/
+=======
+/*global gettext, interpolate, ngettext*/
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
 'use strict';
 {
     function show(selector) {
@@ -179,9 +183,12 @@
                 }
             });
         }
+<<<<<<< HEAD
         // Sync counter when navigating to the page, such as through the back
         // button.
         window.addEventListener('pageshow', (event) => updateCounter(actionCheckboxes, options));
+=======
+>>>>>>> a610366b11e6982d1cfadc431c8eeaa78d277782
     };
 
     // Call function fn when the DOM is loaded and ready. If it is already
