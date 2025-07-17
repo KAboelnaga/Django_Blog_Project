@@ -8,7 +8,7 @@ urlpatterns = [
     # Regular HTML views
     path('', include('blogs.urls') ),
     path('subscriptions/', include('subscriptions.urls', namespace='subscriptions')),
-    path('forbidden/', include('forbidden.urls')),
+    path('forbidden/', include('forbidden.urls', namespace='forbidden')),
     path('', include('users.urls', namespace='users')),
     # API routes
     path('api/comments/', include('comments.urls')),  # change to 'api/comments/'

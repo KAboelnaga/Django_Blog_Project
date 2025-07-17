@@ -16,7 +16,7 @@ def add_forbidden_word(request):
         word = request.POST.get('word').strip()
         if word:
             ForbiddenWord.objects.get_or_create(word=word)
-            return redirect('forbidden_words_list')
+            return redirect('forbidden:forbidden_words_list')
     return render(request, 'forbidden/add_forbidden_word.html')
 
 
@@ -29,7 +29,7 @@ def edit_forbidden_word(request, pk):
         if new_word:
             word_instance.word = new_word
             word_instance.save()
-            return redirect('forbidden_words_list')
+            return redirect('forbidden:forbidden_words_list')
     return render(request, 'forbidden/edit_forbidden_word.html', {'word': word_instance})
 
 
@@ -38,4 +38,4 @@ def edit_forbidden_word(request, pk):
 def delete_forbidden_word(request, pk):
     word_instance = get_object_or_404(ForbiddenWord, pk=pk)
     word_instance.delete()
-    return redirect('forbidden_words_list')
+    return redirect('forbidden:forbidden_words_list')

@@ -1,15 +1,9 @@
+{%extends 'base.html'%}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Forbidden Words</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
+{% block content %}
 <body class="bg-light">
 
-<div class="container mt-5">
+<div class="container mt-5 d-flex justify-content-center flex-column">
     <h2 class="mb-4 text-center">🚫 Forbidden Words List</h2>
 
     <table class="table table-bordered table-hover bg-white shadow-sm">
@@ -26,8 +20,8 @@
                 <td>{{ word.id }}</td>
                 <td>{{ word.word }}</td>
                 <td class="text-center">
-                    <a href="{% url 'edit_forbidden_word' word.id %}" class="btn btn-sm btn-warning">✏ Edit</a>
-                    <form action="{% url 'delete_forbidden_word' word.id %}" method="post" class="d-inline">
+                    <a href="{% url 'forbidden:edit_forbidden_word' word.id %}" class="btn btn-sm btn-warning">✏ Edit</a>
+                    <form action="{% url 'forbidden:delete_forbidden_word' word.id %}" method="post" class="d-inline">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
                             🗑 Delete
@@ -44,10 +38,11 @@
     </table>
 
     <div class="text-center mt-3">
-        <a href="{% url 'add_forbidden_word' %}" class="btn btn-primary">➕ Add New Forbidden Word</a>
+        <a href="{% url 'forbidden:add_forbidden_word' %}" class="btn btn-primary">➕ Add New Forbidden Word</a>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+{% endblock %}

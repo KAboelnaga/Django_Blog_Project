@@ -49,10 +49,6 @@
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
       }
 
-      main {
-        width: 80%;
-      }
-
       .post-card {
         background: #fff;
         padding: 1rem;
@@ -106,12 +102,7 @@
     </style>
   </head>
   <body class="min-vh-100">
-    <header>
-      <!-- Login/Register or Logout links -->
-    </header>
       {% include 'partials/navbar.html' %}
-      <div class="container">
-      {% comment %} <aside>{% include 'subscriptions/category_sidebar.html' %}</aside> {% endcomment %}
 
       <main>{% block content %}{% endblock %}</main>
     </div>

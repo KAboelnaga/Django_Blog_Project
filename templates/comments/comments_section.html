@@ -6,7 +6,8 @@
       {% for comment in comments %}
       <div class="list-group-item mb-3 border rounded">
         <div>
-          <strong>{{ comment.filtered_content }}</strong> <br />
+          <strong>{{ comment.USER_ID }}</strong><br />
+          <p>{{ comment.filtered_content }}</p> <br />
           <small class="text-muted">{{ comment.CREATED_AT }}</small>
         </div>
 
@@ -36,7 +37,8 @@
         <div class="ms-4 mt-2 ps-3">
           {% for reply in comment.replies.all %}
           <div class="bg-light p-2 border rounded mt-2">
-            <strong>{{ reply.filtered_content }}</strong> <br />
+            <strong>{{ reply.USER_ID }}</strong> <br />
+            <p>{{ reply.filtered_content }}</p> <br />
             <small class="text-muted">{{ reply.CREATED_AT }}</small>
           </div>
           {% endfor %}

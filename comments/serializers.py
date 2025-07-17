@@ -7,7 +7,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ['ID', 'POST_ID', 'PARENT_COMMENT_ID', 'CONTENT', 'filtered_content', 'CREATED_AT']
+        fields = ['ID','USER_ID','POST_ID', 'PARENT_COMMENT_ID', 'CONTENT', 'filtered_content', 'CREATED_AT']
 
     def get_filtered_content(self, obj):
         return obj.filtered_content()

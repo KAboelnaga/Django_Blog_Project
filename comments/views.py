@@ -6,10 +6,14 @@ from .forms import CommentForm
 from rest_framework import generics, permissions
 from .models import Comment
 from .serializers import CommentSerializer
+from django.contrib import messages
 
 
 
 def add_comment(request, post_id, parent_id=None):
+    if not request.user.is_authenticated:
+        messages.warning(request, "⚠️ You must be logged in to comment.")
+        return redirect('users:login')
     print("helllllo",parent_id)
     post = get_object_or_404(Post, id=post_id)
     parent_comment = Comment.objects.filter(ID=parent_id).first() if parent_id else None
@@ -21,6 +25,7 @@ def add_comment(request, post_id, parent_id=None):
         if form.is_valid():
             Comment.objects.create(
                 POST_ID = post,
+                USER_ID=request.user,
                 PARENT_COMMENT_ID = parent_comment,
                 CONTENT = form.cleaned_data['CONTENT']
                
