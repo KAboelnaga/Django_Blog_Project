@@ -5,6 +5,13 @@
 {% block content %}
 <div class="container">
   <h2>Edit User</h2>
+  {% if messages %}
+      <div class="alert alert-info">
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+      </div>
+    {% endif %}
   <form method="post">
     {% csrf_token %}
     <div class="form-group">
@@ -15,7 +22,7 @@
       
     </div>
     <button type="submit" class="btn btn-primary">Save</button>
-    <a href="{% url 'users_list' %}" class="btn btn-secondary">Cancel</a>
+    <a href="{% url 'users:users_list' %}" class="btn btn-secondary">Cancel</a>
   </form>
 </div>
 {% endblock %}

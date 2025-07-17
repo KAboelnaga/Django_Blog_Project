@@ -3,9 +3,9 @@ from .models import User
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib import messages
-from .forms import UserForm, LoginForm
+from .forms import UserForm, LoginForm, CustomUserForm
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CustomUserForm
+
 # Create your views here.
 
 def user_register (request):
@@ -78,7 +78,7 @@ def toggle_block(request, user_id):
     user = get_object_or_404(User, pk=user_id)
     user.is_blocked = not user.is_blocked
     user.save()
-    return redirect("users:manage_users")
+    return redirect("users:users_list")
 
 
 
@@ -97,7 +97,7 @@ def create_user_view(request):
         if form.is_valid():
             form.save()
             messages.success(request, "User created successfully.")
-            return redirect('users_list')
+            return redirect('users:users_list')
     else:
         form = CustomUserForm()
     return render(request, 'users/create_user.html', {'form': form})
@@ -108,13 +108,19 @@ def user_edit(request, pk):
     user = get_object_or_404(User, pk=pk)
     if request.method == 'POST':
         new_email = request.POST.get('email')
-        if User.objects.exclude(pk=pk).filter(email=new_email).exists():
+        new_username = request.POST.get('username')
+        email_exists = User.objects.exclude(pk=pk).filter(email=new_email).exists()
+        username_exists = User.objects.exclude(pk=pk).filter(username=new_username).exists()
+        if email_exists:
             messages.error(request, 'This email is already in use.')
+        elif username_exists:
+            messages.error(request, 'This username is already in use.')
         else:
             user.email = new_email
+            user.username = new_username
             user.save()
             messages.success(request, 'User updated successfully!')
-            return redirect('users_list')
+            return redirect('users:users_list')
     return render(request, 'users/user_edit.html', {'user': user})
 
 
@@ -122,11 +128,11 @@ def user_delete(request, pk):
     user = get_object_or_404(User, pk=pk)
     if user.is_superuser:
         messages.error(request, "You can't delete another admin.")
-        return redirect('users_list')
+        return redirect('users:users_list')
     if request.method == 'POST':
         user.delete()
         messages.success(request, 'User deleted successfully!')
-        return redirect('users_list')
+        return redirect('users:users_list')
     return render(request, 'users/user_confirm_delete.html', {'user': user})
 
 
@@ -135,18 +141,18 @@ def promote_user_view(request, user_id):
     user_to_promote = get_object_or_404(User, id=user_id)
     current_user = request.user
 
-    if user_to_promote.is_superuser:
-        messages.error(request, "لا يمكن تعديل صلاحيات سوبر يوزر.")
+    if user_to_promote.is_superuser or user_to_promote.is_admin:
+        messages.error(request, "Cannot promote or demote a superuser or admin.")
     elif user_to_promote.is_staff:
         if current_user.is_superuser:
             user_to_promote.is_staff = False
             user_to_promote.save()
-            messages.success(request, "تم إزالة صلاحية الأدمن.")
+            messages.success(request, "User's admin privileges have been removed.")
         else:
-            messages.error(request, "فقط السوبر يوزر يمكنه إزالة صلاحية الأدمن.")
+            messages.error(request, "You do not have permission to demote this user.")
     else:
         user_to_promote.is_staff = True
         user_to_promote.save()
-        messages.success(request, "تم ترقية المستخدم لأدمن.")
+        messages.success(request, "User has been promoted to admin.")
 
-    return redirect('users_list')
+    return redirect('users:users_list')

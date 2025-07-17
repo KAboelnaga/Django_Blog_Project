@@ -111,11 +111,12 @@
     </style>
   </head>
   <body class="min-vh-100">
-    <header>
+    {% comment %} <header>
       <!-- Login/Register or Logout links -->
-    </header>
+    </header> {% endcomment %}
       {% include 'partials/navbar.html' %}
       <div class="container mt-5">
+        
         
      
       {% block content %}{% endblock %}

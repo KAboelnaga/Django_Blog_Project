@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="{% static 'adminlte/plugins/fontawesome-free/css/all.min.css' %}">
 </head>
 <body class="hold-transition sidebar-mini">
+  {%include 'partials/navbar.html'%}
   <div class="wrapper">
 
     <!-- Navbar -->
@@ -25,19 +26,19 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview">
             <li class="nav-item">
-            <a href="{% url 'users_list' %}" class="nav-link">
+            <a href="{% url 'users:users_list' %}" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>Users</p>
             </a>
             </li>
             <li class="nav-item">
-              <a href="{% url 'posts_list' %}" class="nav-link">
+              <a href="{% url 'blogs:posts_list' %}" class="nav-link">
                 <i class="nav-icon fas fa-pencil-alt"></i>
                 <p>Posts</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{% url 'categories_list' %}" class="nav-link">
+              <a href="{% url 'blogs:categories_list' %}" class="nav-link">
                 <i class="nav-icon fas fa-tags"></i>
                 <p>Categories</p>
               </a>

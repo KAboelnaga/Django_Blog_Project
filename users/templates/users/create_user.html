@@ -4,6 +4,13 @@
 {% block title %}Create User{% endblock %}
 {% block content %}
 <h2>Create User</h2>
+{% if messages %}
+      <div class="alert alert-info">
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+      </div>
+    {% endif %}
 <form method="POST" enctype="multipart/form-data">
   {% csrf_token %}
     {% if form.non_field_errors %}
@@ -36,6 +43,14 @@
       {{ form.email }}
     </div>
     <div class="form-group">
+      <label for="id_first_name">First Name:</label>
+      {{ form.first_name }}
+    </div>
+    <div class="form-group">
+      <label for="id_last_name">Last Name:</label>
+      {{ form.last_name }}
+    </div>
+    <div class="form-group">
       <label for="id_password">Password:</label>
       {{ form.password }}
     </div>
@@ -46,6 +61,6 @@
 
 
     <button type="submit" class="btn btn-success">Create</button>
-    <a href="{% url 'users_list' %}" class="btn btn-secondary">Cancel</a>
+    <a href="{% url 'users:users_list' %}" class="btn btn-secondary">Cancel</a>
   </form>
 {% endblock %}

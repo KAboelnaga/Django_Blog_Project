@@ -23,7 +23,7 @@
             </li>
             {% if user.is_admin or user.is_superuser %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'users:manage_users' %}">Admin Panel</a>
+              <a class="nav-link" href="{% url 'dashboard_home' %}">Admin Panel</a>
             </li>
             {% endif %}
             

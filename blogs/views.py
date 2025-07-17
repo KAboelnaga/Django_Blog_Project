@@ -79,7 +79,7 @@ def create_post(request):
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('posts_list') 
+            return redirect('blogs:posts_list') 
     else:
         form = PostForm()
     return render(request, 'blogs/post_create.html', {'form': form})
@@ -89,7 +89,7 @@ def post_update(request, pk):
         form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             form.save()
-            return redirect('posts_list')
+            return redirect('blogs:posts_list')
     else:
         form = PostForm(instance=post)
     return render(request, 'blogs/post_create.html', {'form': form})
@@ -97,7 +97,7 @@ def post_delete(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':
         post.delete()
-        return redirect('posts_list')
+        return redirect('blogs:posts_list')
     return render(request, 'blogs/post_confirm_delete.html', {'post': post})
 
 def category_list(request):
@@ -108,7 +108,7 @@ def category_create(request):
     form = CategoryForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect('categories_list')
+        return redirect('blogs:categories_list')
     return render(request, 'blogs/category_form.html', {'form': form})
 
 
@@ -117,7 +117,7 @@ def category_update(request, pk):
     form = CategoryForm(request.POST or None, instance=cat)
     if form.is_valid():
         form.save()
-        return redirect('categories_list')
+        return redirect('blogs:categories_list')
     return render(request, 'blogs/category_form.html', {'form': form})
 
 
@@ -125,6 +125,6 @@ def category_delete(request, pk):
     cat = get_object_or_404(Category, pk=pk)
     if request.method == 'POST':
         cat.delete()
-        return redirect('categories_list')
+        return redirect('blogs:categories_list')
     return render(request, 'blogs/category_confirm_delete.html', {'cat': cat})
 
