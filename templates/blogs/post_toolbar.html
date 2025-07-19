@@ -1,11 +1,75 @@
-<div class="d-flex justify-content-around align-items-center  p-3 border rounded shadow-sm bg-light">
-    <button class="btn btn-outline-primary">
-      <i class="bi bi-hand-thumbs-up"></i> Like
-    </button>
-    <button class="btn btn-outline-danger">
-      <i class="bi bi-hand-thumbs-down"></i> Dislike
-    </button>
-    <button class="btn btn-outline-secondary" id="toggle-comments">
-      <i class="bi bi-chat-dots"></i> Comments
-    </button>
-  </div>
+<div class="d-flex justify-content-around align-items-center p-3 border rounded shadow-sm bg-light">
+
+  <!-- Like Button -->
+  <button 
+    class="btn {% if likesInfo.is_liked_by_user %}btn-primary{% else %}btn-outline-primary{% endif %}" 
+    id="like-btn" 
+    data-post-id="{{ post.id }}">
+    <i class="bi bi-hand-thumbs-up"></i> Like 
+    <span id="like-count" class="badge bg-primary ms-1">{{ likesInfo.likes_count }}</span>
+  </button>
+
+  <!-- Dislike Button -->
+  <button 
+    class="btn {% if likesInfo.is_disliked_by_user %}btn-danger{% else %}btn-outline-danger{% endif %}" 
+    id="dislike-btn" 
+    data-post-id="{{ post.id }}">
+    <i class="bi bi-hand-thumbs-down"></i> Dislike
+    <span id="dislike-count" class="badge bg-danger ms-1">{{ likesInfo.dislikes_count }}</span>
+  </button>
+
+  <!-- Comments Button -->
+  <button class="btn btn-outline-secondary" id="toggle-comments">
+    <i class="bi bi-chat-dots"></i> Comments
+  </button>
+</div>
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+  const likeBtn = document.getElementById("like-btn");
+  const dislikeBtn = document.getElementById("dislike-btn");
+
+  function sendReaction(button, isLiked) {
+    const postId = button.dataset.postId;
+    const isActive = button.classList.contains(isLiked ? "btn-primary" : "btn-danger");
+    const method = isActive ? "DELETE" : "POST";
+
+    fetch(`/blogs/api/like/${postId}/`, {
+      method: method,
+      headers: {
+        "X-CSRFToken": "{{ csrf_token }}",
+       
+      },
+      body: JSON.stringify({ is_liked: isLiked }), // True for like, False for dislike
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // updating likes & dislikes count
+        document.getElementById("like-count").textContent = data.likes_count;
+        document.getElementById("dislike-count").textContent = data.dislikes_count;
+
+        // Update button styles
+        if (isLiked) {
+          likeBtn.classList.toggle("btn-primary", data.status === "liked");
+          likeBtn.classList.toggle("btn-outline-primary", data.status !== "liked");
+          dislikeBtn.classList.remove("btn-danger");
+          dislikeBtn.classList.add("btn-outline-danger");
+        } else {
+          dislikeBtn.classList.toggle("btn-danger", data.status === "disliked");
+          dislikeBtn.classList.toggle("btn-outline-danger", data.status !== "disliked");
+          likeBtn.classList.remove("btn-primary");
+          likeBtn.classList.add("btn-outline-primary");
+        }
+      });
+  }
+
+  likeBtn.addEventListener("click", () => sendReaction(likeBtn, true));
+  dislikeBtn.addEventListener("click", () => sendReaction(dislikeBtn, false));
+
+  
+});
+
+</script>
+

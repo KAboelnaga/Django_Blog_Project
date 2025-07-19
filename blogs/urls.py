@@ -20,6 +20,8 @@ urlpatterns = [
     path('post/<int:post_id>/', views.post_detail, name='post_detail'),
     path('api/posts/', PostListCreateAPIView.as_view(), name='api-post-list'),
     path('api/posts/<int:pk>/', PostDetailAPIView.as_view(), name='api-post-detail'),
+    path('api/like/<int:post_id>/', views.like_post, name='like_post'),
+
 ]
 
 

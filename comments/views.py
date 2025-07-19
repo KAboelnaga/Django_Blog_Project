@@ -34,8 +34,6 @@ def add_comment(request, post_id, parent_id=None):
                 CONTENT=form.cleaned_data['CONTENT']
             )
 
-           
-
             #return redirect('blogs:post_detail', post_id=post.id)
             return redirect(f"/post/{post_id}?show_comments=true")
 

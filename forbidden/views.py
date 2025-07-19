@@ -3,13 +3,13 @@ from django.views.decorators.http import require_http_methods
 from .models import ForbiddenWord
 
 
-# ✅ Get all forbidden words
+#  Get all forbidden words
 def forbidden_words_list(request):
     words = ForbiddenWord.objects.all()
     return render(request, 'forbidden/forbidden_words_list.html', {'words': words})
 
 
-# ✅ Add a new forbidden word
+#  Add a new forbidden word
 @require_http_methods(["POST", "GET"])
 def add_forbidden_word(request):
     if request.method == "POST":
@@ -20,7 +20,7 @@ def add_forbidden_word(request):
     return render(request, 'forbidden/add_forbidden_word.html')
 
 
-# ✅ Edit a forbidden word
+#  Edit a forbidden word
 @require_http_methods(["POST", "GET"])
 def edit_forbidden_word(request, pk):
     word_instance = get_object_or_404(ForbiddenWord, pk=pk)
@@ -33,7 +33,7 @@ def edit_forbidden_word(request, pk):
     return render(request, 'forbidden/edit_forbidden_word.html', {'word': word_instance})
 
 
-# ✅ Delete a forbidden word
+#  Delete a forbidden word
 @require_http_methods(["POST"])
 def delete_forbidden_word(request, pk):
     word_instance = get_object_or_404(ForbiddenWord, pk=pk)

@@ -1,0 +1,112 @@
+[
+{
+    "model": "blogs.post",
+    "pk": 1,
+    "fields": {
+        "title": "Egypt Wins African Cup",
+        "image": "post_images/11soccer.600.webp",
+        "content": "Egypt’s national football team claimed victory in the African Cup final after a tense penalty shootout.",
+        "category": 1,
+        "created_at": "2025-07-13T10:58:47Z"
+    }
+},
+{
+    "model": "blogs.post",
+    "pk": 2,
+    "fields": {
+        "title": "Presidential Debate Heats Up",
+        "image": "post_images/images.jpeg",
+        "content": "Candidates exchanged sharp words in the final debate before elections, highlighting major policy differences",
+        "category": 3,
+        "created_at": "2025-07-13T10:59:22Z"
+    }
+},
+{
+    "model": "blogs.post",
+    "pk": 3,
+    "fields": {
+        "title": "AI Breakthrough in Medical Diagnosis",
+        "image": "post_images/ai-in-diagnosis.jpg",
+        "content": "A new AI model can detect over 30 diseases with higher accuracy than traditional diagnostic methods.",
+        "category": 4,
+        "created_at": "2025-07-13T11:01:19Z"
+    }
+},
+{
+    "model": "blogs.post",
+    "pk": 4,
+    "fields": {
+        "title": "Cairo Hosts International Art Fair",
+        "image": "post_images/CH2A8013-1080x720.png",
+        "content": "Artists from over 40 countries are exhibiting their work in this year’s Cairo Art Week.",
+        "category": 5,
+        "created_at": "2025-07-13T11:02:12Z"
+    }
+},
+{
+    "model": "blogs.post",
+    "pk": 5,
+    "fields": {
+        "title": "Breaking News: Cabinet Reshuffle Announced",
+        "image": "post_images/3386891-1398658185.jpg",
+        "content": "The Prime Minister announced a cabinet reshuffle affecting several key ministries.\r\nCategory: News",
+        "category": 2,
+        "created_at": "2025-07-13T11:04:12Z"
+    }
+},
+{
+    "model": "blogs.post",
+    "pk": 6,
+    "fields": {
+        "title": "Local Team Advances to Final",
+        "image": "post_images/Ittihad-Ghariyan.jpg",
+        "content": "Alexandria FC secured a place in the national league final after a thrilling 3–2 win.",
+        "category": 1,
+        "created_at": "2025-07-13T11:05:11Z"
+    }
+},
+{
+    "model": "blogs.post",
+    "pk": 7,
+    "fields": {
+        "title": "Parliament Approves New Tax Law",
+        "image": "post_images/images_1.jpeg",
+        "content": "The new law is expected to streamline business taxes and increase government revenue.",
+        "category": 3,
+        "created_at": "2025-07-13T11:06:06Z"
+    }
+},
+{
+    "model": "blogs.post",
+    "pk": 8,
+    "fields": {
+        "title": "Google Unveils New Search AI",
+        "image": "post_images/20biz-google-sundar-lbtm-videoSixteenByNine3000.jpg",
+        "content": "The new algorithm improves contextual understanding and is expected to launch globally by next month.",
+        "category": 4,
+        "created_at": "2025-07-13T11:06:50Z"
+    }
+},
+{
+    "model": "blogs.post",
+    "pk": 9,
+    "fields": {
+        "title": "Record Rainfall in Upper Egypt",
+        "image": "post_images/images_2.jpeg",
+        "content": "Torrential rains caused flooding in several towns, prompting emergency response efforts.",
+        "category": 2,
+        "created_at": "2025-07-13T11:07:59Z"
+    }
+},
+{
+    "model": "blogs.post",
+    "pk": 10,
+    "fields": {
+        "title": "Modern Arabic Calligraphy Exhibit Opens",
+        "image": "post_images/images_3.jpeg",
+        "content": "The exhibit showcases how modern artists are reinventing Arabic calligraphy for the digital age.",
+        "category": 5,
+        "created_at": "2025-07-13T11:09:50Z"
+    }
+}
+]

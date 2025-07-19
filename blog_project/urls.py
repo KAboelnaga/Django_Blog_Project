@@ -5,7 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', lambda request: HttpResponse("<h1 style='text-align: center;'>Django project is running 🚀</h1>")),
+    # path('', lambda request: HttpResponse("<h1 style='text-align: center;'>Django project is running 🚀</h1>")),
 
     path('admin/', admin.site.urls),
     path('dashboard/', include('dashboard.urls')),

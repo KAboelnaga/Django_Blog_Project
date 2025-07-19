@@ -1,6 +1,8 @@
+import json
 from django.core.paginator import Paginator
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Category, User
+from .models import Post, Category, Like
 from comments.forms import CommentForm
 from comments.models import Comment
 from rest_framework import generics, permissions
@@ -8,6 +10,9 @@ from .serializers import PostSerializer
 from .forms import PostForm, CategoryForm
 from django.contrib import messages
 from django.contrib.auth import get_user_model
+
+from django.views.decorators.http import require_http_methods
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     posts = Post.objects.order_by('-created_at')
@@ -38,22 +43,13 @@ def posts_by_category(request, category_id):
 def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     comments = Comment.objects.filter(POST=post_id,PARENT_COMMENT__isnull=True)
-    for comment in comments:
-        print("comment IDdddddddddd:", comment.ID)
-
-    # if request.method == 'POST':
-    #     form = CommentForm(request.POST)
-    #     if form.is_valid():
-    #         comment = form.save(commit=False)
-    #         comment.post = post
-    #         comment.save()
-    #         return redirect('blogs:post_detail', post_id=post.id)
-    # else:
+    likesInfo =get_likes_details(post_id, request.user.id) if request.user.is_authenticated else None
     form = CommentForm()
     return render(request, 'blogs/post_detail.html', {
         'post': post,
         'comments': comments,
-        'form': form,  # <-- pass the instance, not the class
+        'form': form, 
+        'likesInfo':likesInfo 
     })
 
 class PostListCreateAPIView(generics.ListCreateAPIView):
@@ -128,3 +124,61 @@ def category_delete(request, pk):
         return redirect('blogs:categories_list')
     return render(request, 'blogs/category_confirm_delete.html', {'cat': cat})
 
+
+
+
+
+@login_required
+@require_http_methods(["POST", "DELETE"])
+def like_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    user = request.user
+    body_data = json.loads(request.body.decode('utf-8'))
+    is_liked = body_data.get('is_liked')
+    print("Like Data:", is_liked)
+    
+    if request.method == "POST":
+        # Remove opposite reaction before adding new one
+        Like.objects.filter(user=user, post=post).delete()
+
+        # Add new reaction (like or dislike)
+        Like.objects.create(user=user, post=post, is_liked=is_liked)
+
+        return JsonResponse({
+            "status": "liked" if is_liked else "disliked",
+            "likes_count": get_likes(post_id),
+            "dislikes_count": get_dislikes(post_id)
+        })
+
+    elif request.method == "DELETE":
+        # Remove user reaction
+        print("Removing like/dislike",is_liked)
+        Like.objects.filter(user=user, post=post, is_liked=is_liked).delete()
+
+        return JsonResponse({
+            "status": "unliked" if is_liked else "undisliked",
+            "likes_count": get_likes(post_id),
+            "dislikes_count": get_dislikes(post_id)
+        })
+
+def get_likes(post_id):
+    return Like.objects.filter(post_id=post_id, is_liked=True).count()
+
+def get_dislikes(post_id):
+    return Like.objects.filter(post_id=post_id, is_liked=False).count()
+
+def is_liked_by_user(post_id, user_id):
+    return Like.objects.filter(post_id=post_id, user_id=user_id, is_liked=True).exists()
+
+def is_disliked_by_user(post_id, user_id):
+    return Like.objects.filter(post_id=post_id, user_id=user_id, is_liked=False).exists()
+
+def get_likes_details(post_id,user_id):
+    likes_count = get_likes(post_id)
+    dislikes_count = get_dislikes(post_id)
+    is_liked = is_liked_by_user(post_id, user_id)
+    is_disliked = is_disliked_by_user(post_id, user_id)
+    return {"likes_count": likes_count, 
+            "dislikes_count": dislikes_count, 
+            "is_liked_by_user": is_liked, 
+            "is_disliked_by_user": is_disliked}

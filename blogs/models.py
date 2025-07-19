@@ -23,6 +23,12 @@ class Post(models.Model):
         from django.urls import reverse
         return reverse('blogs:post_detail', args=[str(self.id)])
 
+class Like(models.Model):
+    user = models.ForeignKey('users.User', on_delete=models.CASCADE)
+    post = models.ForeignKey('blogs.Post', on_delete=models.CASCADE, related_name='likes')
+    is_liked = models.BooleanField(default=False)
+
+
 # class ForbiddenWord(models.Model):
 #     word = models.CharField(max_length=50, unique=True)
 
