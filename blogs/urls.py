@@ -22,6 +22,11 @@ urlpatterns = [
     path('api/posts/<int:pk>/', PostDetailAPIView.as_view(), name='api-post-detail'),
     path('api/like/<int:post_id>/', views.like_post, name='like_post'),
 
+    path('tags/', views.tags_list, name='tags_list'),
+    path('tags/create/', views.create_tag, name='create_tag'),
+    path('tags/<int:pk>/update/', views.tag_update, name='tag_update'),
+    path('tags/<int:pk>/delete/', views.tag_delete, name='tag_delete'),
+
 ]
 
 

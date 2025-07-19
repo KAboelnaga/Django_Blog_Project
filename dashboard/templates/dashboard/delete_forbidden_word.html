@@ -1,0 +1,16 @@
+{% extends "dashboard/index.html" %}
+
+{% load static %}
+{% block title %}Delete Forbidden Word{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2>Delete Forbidden Word</h2>
+    <p>Are you sure you want to delete: <strong>{{ ForbiddenWord.word }}</strong>?</p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Yes, Delete</button>
+      <a href="{% url 'forbidden_words_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>
+{% endblock %}

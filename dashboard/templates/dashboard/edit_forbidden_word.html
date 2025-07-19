@@ -4,12 +4,12 @@
 {% block title %}Edit Forbidden Word{% endblock %}
 {% block content %}
   <div class="container mt-4">
-    <h2>Edit Forbidden Word: {{ forbidden_word.name }}</h2>
+    <h2>Edit Forbidden Word: {{ word.word }}</h2>
     <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.as_p }}
       <button type="submit" name="submit_post" class="btn btn-primary">Update</button>
-      <a href="{% url 'forbidden:forbidden_words_list' %}" class="btn btn-secondary">Cancel</a>
+      <a href="{% url 'forbidden_words_list' %}" class="btn btn-secondary">Cancel</a>
     </form>
   </div>
 {% endblock %}

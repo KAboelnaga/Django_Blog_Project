@@ -2,12 +2,12 @@ import json
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Category, Like
+from .models import Post, Category, Like, Tags
 from comments.forms import CommentForm
 from comments.models import Comment
 from rest_framework import generics, permissions
 from .serializers import PostSerializer
-from .forms import PostForm, CategoryForm
+from .forms import PostForm, CategoryForm, TagsForm
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 
@@ -15,20 +15,33 @@ from django.views.decorators.http import require_http_methods
 from django.contrib.auth.decorators import login_required
 
 def home(request):
+    tag_query = request.GET.get('tag')
+
     posts = Post.objects.order_by('-created_at')
+    if tag_query:
+        posts = posts.filter(tags__name__icontains=tag_query).distinct()
+
     paginator = Paginator(posts, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+
     categories = Category.objects.all()
+    tags = Tags.objects.all()
 
     return render(request, 'blogs/home.html', {
         'page_obj': page_obj,
-        'categories': categories
+        'categories': categories,
+        'tags': tags,
+        'tag_query': tag_query,
     })
+
 
 def posts_by_category(request, category_id):
     category = get_object_or_404(Category, id=category_id)
+    tag_query = request.GET.get('tag')
     posts = Post.objects.filter(category=category).order_by('-created_at')
+    if tag_query:
+        posts = posts.filter(tags__name__icontains=tag_query).distinct()
     paginator = Paginator(posts, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -70,25 +83,76 @@ def posts_list(request):
     posts = Post.objects.all()
     return render(request, 'blogs/posts_list.html', {'posts': posts})
 
-def create_post(request):
+def create_tag(request):
+    form = TagsForm(request.POST or None)
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+        messages.success(request, 'Tag created successfully!')
+        return redirect('blogs:tags_list')
+
+    return render(request, 'blogs/tag_create.html', {'form': form})
+
+def tags_list(request):
+    tags = Tags.objects.all()
+    return render(request, 'blogs/tags_list.html', {'tags': tags})
+
+def tag_update(request, pk):
+    tag = get_object_or_404(Tags, pk=pk)
+    form = TagsForm(request.POST or None, instance=tag)
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'Tag updated successfully!')
+        return redirect('blogs:tags_list')
+    return render(request, 'blogs/tag_form.html', {'form': form})
+def tag_delete(request, pk):
+    tag = get_object_or_404(Tags, pk=pk)
     if request.method == 'POST':
-        form = PostForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('blogs:posts_list') 
-    else:
-        form = PostForm()
-    return render(request, 'blogs/post_create.html', {'form': form})
+        tag.delete()
+        messages.success(request, 'Tag deleted successfully!')
+        return redirect('blogs:tags_list')
+    return render(request, 'blogs/tag_confirm_delete.html', {'tag': tag})
+def create_post(request):
+    post_form = PostForm()
+    if request.method == 'POST':
+        post_form = PostForm(request.POST, request.FILES)
+        if post_form.is_valid():
+            post = post_form.save(commit=False)
+            post.save()  # Save post first to assign tags
+
+            # Process custom tags input
+            tags_data = post_form.cleaned_data.get('tags_input')
+            if tags_data:
+                tags = [tag.strip() for tag in tags_data.split(',') if tag.strip()]
+                tag_objs = [Tags.objects.get_or_create(name=tag)[0] for tag in tags]
+                post.tags.set(tag_objs)
+            else:
+                post.tags.clear()
+
+            messages.success(request, 'Post created successfully!')
+            return redirect('blogs:posts_list')
+
+    return render(request, 'blogs/post_create.html', {'form': post_form})
+
+
+
+
 def post_update(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    if request.method == 'POST':
-        form = PostForm(request.POST, request.FILES, instance=post)
-        if form.is_valid():
-            form.save()
-            return redirect('blogs:posts_list')
-    else:
-        form = PostForm(instance=post)
-    return render(request, 'blogs/post_create.html', {'form': form})
+    form = PostForm(request.POST or None, instance=post)
+    if form.is_valid():
+        form.save()
+        tags_data = form.cleaned_data.get('tags_input')
+        if tags_data:
+            tags = [tag.strip() for tag in tags_data.split(',') if tag.strip()]
+            tag_objs = [Tags.objects.get_or_create(name=tag)[0] for tag in tags]
+            post.tags.set(tag_objs)
+        else:
+            post.tags.clear()
+        messages.success(request, 'Post updated successfully!')
+        return redirect('blogs:posts_list')
+    return render(request, 'blogs/post_edit.html', {'form': form})
+
+
 def post_delete(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':

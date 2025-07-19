@@ -20,18 +20,26 @@
               </div>
             {% endfor %}
           {% endif %}
+        <div class="mb-4">
+          <form method="get" class="d-flex" style="max-width: 300px;">
+            <input type="text" name="tag" class="form-control me-2" placeholder="Search by tag" value="{{ tag_query|default_if_none:'' }}">
+            <button type="submit" class="btn btn-primary">Search</button>
+          </form>
+        </div>
         {% for post in page_obj %}
         <div class="  mb-4">
           <div class="card post-card h-100 align-items-center">
             <a href="{{ post.get_absolute_url }}">
               <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}">
             </a>
-            <div class="card-body">
-              <h5 class="card-title">{{ post.title }}</h5>
-              <p class="card-text text-muted">{{ post.created_at|date:"F j, Y" }}</p>
+            <div class="card-body w-100 mb-2">
+                <h5 class="card-title ">{{ post.title }}</h5>
+                <p class="card-text text-muted">{{ post.created_at|date:"F j, Y" }}</p>
+                {% include 'partials/tags.html' %}
             </div>
           </div>
         </div>
+        
         {% endfor %}
       </div>
 

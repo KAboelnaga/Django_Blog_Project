@@ -1,0 +1,34 @@
+{% extends "dashboard/index.html" %}
+{% load static %}
+
+{% block title %}Tags List{% endblock %}
+{% block content %}
+  <div class="container mt-4">
+    <h2>All Tags</h2>
+
+    <a href="{% url 'blogs:create_tag' %}" class="btn btn-primary mb-3">Create New Tag</a>
+
+    {% if messages %}
+      <div class="alert alert-info">
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% if tags %}
+      <ul class="list-group">
+        {% for tag in tags %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ tag.name }}
+            <span>
+              <a href="{% url 'blogs:tag_update' tag.pk %}" class="btn btn-sm btn-info">Edit</a>
+              <a href="{% url 'blogs:tag_delete' tag.pk %}" class="btn btn-sm btn-danger">Delete</a>
+            </span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No Tags available.</p>
+    {% endif %}
+  </div>
+{% endblock %}

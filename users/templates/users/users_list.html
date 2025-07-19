@@ -34,25 +34,42 @@
       {% endif %}
     </td>
     <td>
-      {% if not user.is_superuser or request.user.is_superuser %}
-        <a href="{% url 'users:user_edit' user.pk %}" class="btn btn-sm btn-primary">Edit</a>
-        <a href="{% url 'users:user_delete' user.pk %}" class="btn btn-sm btn-danger">Delete</a>
-
-        {% if user.is_staff %}
+      <table class="table table-borderless mb-0 d-flex align-items-center justify-content-start">
+      <tr>
+        <td>
+        {% if not user.is_superuser or request.user.is_superuser %}
+          <a href="{% url 'users:user_edit' user.pk %}" class="btn btn-sm btn-primary">Edit</a>
+        {% else %}
+          <span class="text-muted">Restricted</span>
+        {% endif %}
+        </td>
+        <td>
+        {% if not user.is_superuser or request.user.is_superuser %}
+          <a href="{% url 'users:user_delete' user.pk %}" class="btn btn-sm btn-danger">Delete</a>
+        {% endif %}
+        </td>
+        <td>
+        {% if not user.is_superuser or request.user.is_superuser %}
+          {% if user.is_staff %}
           {% if request.user.is_superuser %}
             <a href="{% url 'users:promote_user' user.pk %}" class="btn btn-sm btn-warning">revoke admin</a>
           {% endif %}
-        {% else %}
+          {% else %}
           <a href="{% url 'users:promote_user' user.pk %}" class="btn btn-sm btn-success">promote to admin</a>
+          {% endif %}
         {% endif %}
-        {% if user.is_blocked %}
+        </td>
+        <td>
+        {% if not user.is_superuser or request.user.is_superuser %}
+          {% if user.is_blocked %}
           <a href="{% url 'users:toggle_block' user.pk %}" class="btn btn-sm btn-primary">unblock</a>
-        {%else%}
+          {% else %}
           <a href="{% url 'users:toggle_block' user.pk %}" class="btn btn-sm btn-danger">block</a>
+          {% endif %}
         {% endif %}
-      {% else %}
-        <span class="text-muted">Restricted</span>
-      {% endif %}
+        </td>
+      </tr>
+      </table>
     </td>
   </tr>
 {% endfor %}

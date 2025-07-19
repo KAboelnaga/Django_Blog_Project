@@ -3,12 +3,12 @@
 
 {% block content %}
   <div class="container mt-4">
-    <h2>Create New Post</h2>
+    <h2>Create New Tag</h2>
     <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.as_p }}
-      <button type="submit" name="submit_post" class="btn btn-success">Create</button>
-      <a href="{% url 'blogs:posts_list' %}" class="btn btn-secondary">Cancel</a>
+      <button type="submit" class="btn btn-success">Create</button>
+      <a href="{% url 'blogs:tags_list' %}" class="btn btn-secondary">Cancel</a>
     </form>
   </div>
 {% endblock %}

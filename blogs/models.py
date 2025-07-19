@@ -15,6 +15,7 @@ class Post(models.Model):
     content = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='posts')
     created_at = models.DateTimeField(default=timezone.now)
+    tags = models.ManyToManyField('Tags', blank=True, related_name='posts')
 
     def __str__(self):
         return self.title
@@ -28,9 +29,8 @@ class Like(models.Model):
     post = models.ForeignKey('blogs.Post', on_delete=models.CASCADE, related_name='likes')
     is_liked = models.BooleanField(default=False)
 
+class Tags(models.Model):
+    name = models.CharField(max_length=100, unique=True)
 
-# class ForbiddenWord(models.Model):
-#     word = models.CharField(max_length=50, unique=True)
-
-#     def __str__(self):
-#         return self.word
+    def __str__(self):
+        return self.name
