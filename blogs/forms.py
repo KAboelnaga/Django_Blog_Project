@@ -7,15 +7,19 @@ class TagsForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter tag name'}),
         }
+
 class PostForm(forms.ModelForm):
     tags_input = forms.CharField(
         required=False,
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter tag names separated by commas'})
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter tags like #tag1 #tag2 (space-separated)'
+        })
     )
 
     class Meta:
         model = Post
-        fields = ['id','title', 'content', 'category', 'image', 'tags']
+        fields = ['id', 'title', 'content', 'category', 'image']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter title'}),
             'content': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
