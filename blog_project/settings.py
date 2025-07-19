@@ -34,10 +34,10 @@ AUTH_USER_MODEL = 'users.User'
 # Application definition
 
 INSTALLED_APPS = [
+    'users',
     'blogs',
     'comments',
     'channels',
-    'users',
     'forbidden',
     'subscriptions',
     'django.contrib.admin',
@@ -47,8 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dashboard',
-
-    
 ]
 
 ASGI_APPLICATION = 'Django_Blog_Project.asgi.application'

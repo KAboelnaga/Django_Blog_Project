@@ -111,18 +111,18 @@ def tag_delete(request, pk):
         messages.success(request, 'Tag deleted successfully!')
         return redirect('blogs:tags_list')
     return render(request, 'blogs/tag_confirm_delete.html', {'tag': tag})
+
 def create_post(request):
     post_form = PostForm()
     if request.method == 'POST':
         post_form = PostForm(request.POST, request.FILES)
         if post_form.is_valid():
             post = post_form.save(commit=False)
-            post.save()  # Save post first to assign tags
+            post.save()  
 
-            # Process custom tags input
             tags_data = post_form.cleaned_data.get('tags_input')
             if tags_data:
-                tags = [tag.strip() for tag in tags_data.split(',') if tag.strip()]
+                tags = [tag.strip().lstrip('#') for tag in tags_data.split() if tag.startswith('#')]
                 tag_objs = [Tags.objects.get_or_create(name=tag)[0] for tag in tags]
                 post.tags.set(tag_objs)
             else:
@@ -138,19 +138,32 @@ def create_post(request):
 
 def post_update(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    form = PostForm(request.POST or None, instance=post)
-    if form.is_valid():
-        form.save()
-        tags_data = form.cleaned_data.get('tags_input')
-        if tags_data:
-            tags = [tag.strip() for tag in tags_data.split(',') if tag.strip()]
-            tag_objs = [Tags.objects.get_or_create(name=tag)[0] for tag in tags]
-            post.tags.set(tag_objs)
-        else:
-            post.tags.clear()
-        messages.success(request, 'Post updated successfully!')
-        return redirect('blogs:posts_list')
-    return render(request, 'blogs/post_edit.html', {'form': form})
+
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            updated_post = form.save(commit=False)
+            updated_post.author = request.user
+            updated_post.save()
+
+            updated_post.tags.clear()
+
+            tags_input = form.cleaned_data.get('tags_input')
+            if tags_input:
+                tag_names = [tag.strip().lstrip('#') for tag in tags_input.split() if tag.startswith('#')]
+                tag_objs = [Tags.objects.get_or_create(name=name)[0] for name in tag_names]
+                updated_post.tags.set(tag_objs)
+            else:
+                updated_post.tags.clear()
+
+            return redirect(updated_post.get_absolute_url())
+    else:
+        form = PostForm(instance=post)
+        current_tags = ' '.join(f'#{tag}' for tag in post.tags.values_list('name', flat=True))
+        form.fields['tags_input'].initial = current_tags
+
+    return render(request, 'blogs/post_edit.html', {'form': form, 'post': post})
+
 
 
 def post_delete(request, pk):

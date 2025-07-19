@@ -7,7 +7,23 @@
     <h2>Edit Post: {{ post.title }}</h2>
     <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
-      {{ form.as_p }}
+      <div class="form-group">
+        {{ form.title.label_tag }}{{ form.title }}
+      </div>
+      <div class="form-group">
+        {{ form.content.label_tag }}{{ form.content }}
+      </div>
+      <div class="form-group">
+        {{ form.category.label_tag }}{{ form.category }}
+      </div>
+      <div class="form-group">
+        {{ form.image.label_tag }}{{ form.image }}
+      </div>
+      <div class="form-group">
+        {{ form.tags_input.label_tag }}
+        {{ form.tags_input }}
+        <small class="form-text text-muted">Write tags like <code>#django #python</code>. Separate each with a space. Existing tags will be replaced.</small>
+      </div>
       <button type="submit" name="submit_post" class="btn btn-primary">Update</button>
       <a href="{% url 'blogs:posts_list' %}" class="btn btn-secondary">Cancel</a>
     </form>
