@@ -35,7 +35,7 @@ A blog platform built with Django, featuring user authentication, category subsc
 
 
 
-###🔹 Authentication Pages
+### 🔹 Authentication Pages
 
 ### - Registration Page
   - Unique username & email validation.
@@ -45,8 +45,8 @@ A blog platform built with Django, featuring user authentication, category subsc
 
 
 ### - Login Page
-  -Authenticates users.
-  -Shows error message if account is blocked.
+  - Authenticates users.
+  - Shows error message if account is blocked.
 
 ![login Page](Blog_Screenshots/login.png)
 
@@ -55,6 +55,8 @@ A blog platform built with Django, featuring user authentication, category subsc
 ### 🔹 Post Page
 
  - Content: Title, Image, Content, Category, Tags, Comments.
+
+   
 ![post Page](Blog_Screenshots/post.png)
 
 
@@ -72,11 +74,18 @@ A blog platform built with Django, featuring user authentication, category subsc
 
   - Doesn't have access over the admin panel
   - View posts & categories.
-  - Search by tag or title.
-  - Like, dislike, comment, and reply (if logged in).
 
 ![user Page](Blog_Screenshots/normal_user.png)
+
+ - Search by tag or title.
+
 ![search Page](Blog_Screenshots/search.png)
+
+
+  - Like, dislike, comment, and reply (if logged in).
+
+![search Page](Blog_Screenshots/logout_comment.png)
+    
 
 
 ### 🔹 Admin Panel Features
