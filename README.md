@@ -103,7 +103,7 @@ A blog platform built with Django, featuring user authentication, category subsc
 ### -  Admin Can perform all CRUD operations on categories
   ![admin Page](Blog_Screenshots/crud_categories.png)
 ### -  Admin Can perform all CRUD operations on forbidden words
-### -   ![admin Page](Blog_Screenshots/forbidden_list.jpeg)
+   ![admin Page](Blog_Screenshots/forbidden_list.jpeg)
     ![admin Page](Blog_Screenshots/add_forbidden.png)
 ### -  Admin Can perform all CRUD operations on users.
    ![admin Page](Blog_Screenshots/crud_users.png)
