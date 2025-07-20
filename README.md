@@ -36,21 +36,21 @@ A blog platform built with Django, featuring user authentication, category subsc
   - Unique username & email validation.
   - Password confirmation.
 
-![Registration Page](Blog_Screenshots/register.jpeg)
+![Registration Page](Blog_Screenshots/register.png)
 
 
 -Login Page
   -Authenticates users.
   -Shows error message if account is blocked.
 
-![login Page](Blog_Screenshots/login.jpeg)
+![login Page](Blog_Screenshots/login.png)
 
 
 
 🔹 Post Page
 
 -Content: Title, Image, Content, Category, Tags, Comments.
-![post Page](Blog_Screenshots/post.jpeg)
+![post Page](Blog_Screenshots/post.png)
 
 
 -Interactions:
@@ -59,7 +59,7 @@ A blog platform built with Django, featuring user authentication, category subsc
   - Inappropriate words censored automatically (stupid → ******).
   - Like/Dislike counter .
 
-![comments Page](Blog_Screenshots/comments.jpeg)
+![comments Page](Blog_Screenshots/comments.png)
 
 
 
@@ -70,8 +70,8 @@ A blog platform built with Django, featuring user authentication, category subsc
   - Search by tag or title.
   - Like, dislike, comment, and reply (if logged in).
 
-![user Page](Blog_Screenshots/normal_user.jpeg)
-![search Page](Blog_Screenshots/search.jpeg)
+![user Page](Blog_Screenshots/normal_user.png)
+![search Page](Blog_Screenshots/search.png)
 
 
 🔹 Admin Panel Features
@@ -80,18 +80,18 @@ A blog platform built with Django, featuring user authentication, category subsc
   - User Management: Block/unblock users, promote users to admin.
   - UI: Based on AdminLTE template.
 
-![admin Page](Blog_Screenshots/admin_panel.jpeg)
+![admin Page](Blog_Screenshots/admin_panel.png)
 
 
 - Admin Can perform all CRUD operations on posts
-  ![admin Page](Blog_Screenshots/crud_users.jpeg)
+  ![admin Page](Blog_Screenshots/crud_users.png)
   ![admin Page](Blog_Screenshots/create_post.jpeg)
 -  Admin Can perform all CRUD operations on categories
-  ![admin Page](Blog_Screenshots/crud_categories.jpeg)
+  ![admin Page](Blog_Screenshots/crud_categories.png)
 -  Admin Can perform all CRUD operations on forbidden words
--   ![admin Page](Blog_Screenshots/orbidden_list.jpeg)
-    ![admin Page](Blog_Screenshots/add_forbidden.jpeg)
+-   ![admin Page](Blog_Screenshots/forbidden_list.jpeg)
+    ![admin Page](Blog_Screenshots/add_forbidden.png)
 -  Admin Can perform all CRUD operations on users.
-   ![admin Page](Blog_Screenshots/crud_users.jpeg)
+   ![admin Page](Blog_Screenshots/crud_users.png)
  
 
