@@ -37,14 +37,14 @@ A blog platform built with Django, featuring user authentication, category subsc
 
 ### 🔹 Authentication Pages
 
-### - Registration Page
+- **Registration Page**
   - Unique username & email validation.
   - Password confirmation.
 
 ![Registration Page](Blog_Screenshots/register.png)
 
 
-### - Login Page
+- **Login Page**
   - Authenticates users.
   - Shows error message if account is blocked.
 
