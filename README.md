@@ -1,10 +1,33 @@
 # 📌 Django Blog Project
 
- ## ✅ Overview
-A blog platform built with Django, featuring user authentication, category subscriptions with email notifications, post interactions (like, dislike, comments), and an admin panel for full CRUD operations.
+## ✅ Overview
+A blog platform built with **Django**, featuring:  
+✔ User authentication & role-based access.  
+✔ Category subscriptions with email notifications.  
+✔ Post interactions (like, dislike, comments, replies, and censorship of inappropriate words).  
+✔ Admin panel with full CRUD operations for posts, categories, forbidden words, and users.
 
+---
 
-## 🔹 How To Run 
+## 🔹 How To Run
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/your-repo.git
+   cd your-repo
+2. **Create & activate a virtual environment:**
+   python -m venv venv
+   source venv/bin/activate   # (Linux/Mac)
+   venv\Scripts\activate      # (Windows)
+
+3. **Install dependencies:**
+   pip install -r requirements.txt
+
+4. **Apply migrations:**
+   python manage.py migrate
+
+5. **Run the development server:**
+   python manage.py runserver
 
 
 
@@ -12,23 +35,23 @@ A blog platform built with Django, featuring user authentication, category subsc
 
 ### 🔹 Landing Page
 
-### - Header
+ - **Header**
   - Login/Register links (or Logout if authenticated).
   - Admins see an additional "Manage Blog" link.
 
 
- ### - Sidebar (Categories)
+ - **Sidebar (Categories)**
   - Lists all categories with Subscribe/Unsubscribe buttons.
   - Redirects to posts filtered by category.
   - Email confirmation upon subscription.
 
 
-### - Body (Top Posts)
+ - **Body (Top Posts)**
   - Displays top posts sorted by publish date.
   - Clicking a post image redirects to its page.
 
 
-### - Footer (Pagination)
+ - **Footer (Pagination)**
   - Displays 5 posts per page with Next/Previous buttons.
 
 ![Landing Page](Blog_Screenshots/home.jpeg)
