@@ -3,8 +3,7 @@ channels==4.2.2
 Django==5.2.4
 djangorestframework==3.16.0
 pillow==11.3.0
-psycopg==3.2.9
-psycopg-binary==3.2.9
+psycopg2-binary
 python-decouple==3.8
 sqlparse==0.5.3
 typing_extensions==4.14.1
