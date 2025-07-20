@@ -17,7 +17,7 @@ A blog platform built with Django, featuring user authentication, category subsc
   - Admins see an additional "Manage Blog" link.
 
 
-### - Sidebar (Categories)
+ ### - Sidebar (Categories)
   - Lists all categories with Subscribe/Unsubscribe buttons.
   - Redirects to posts filtered by category.
   - Email confirmation upon subscription.
