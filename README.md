@@ -9,7 +9,7 @@ Header
 - Login/Register links (or Logout if authenticated).
 - Admins see an additional "Manage Blog" link.
 
-![Landing Page](screenshots/landing_page.png)
+![Landing Page](Blog_Screenshots/home.jpeg)
 
 🔹 Sidebar (Categories)
 Lists all categories with Subscribe/Unsubscribe buttons.
