@@ -12,69 +12,60 @@
         {% endfor %}
       </div>
     {% endif %}
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Username</th>
-        <th>Email</th>
-        <th>Is Admin</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-     {% for user in users %}
-  <tr {% if user.is_superuser or user.is_staff %} style="color:red;" {% endif %}>
-    <td>{{ user.username }}</td>
-    <td>{{ user.email }}</td>
-    <td>
-      {% if user.is_staff or user.is_superuser %}
-        Admin
-      {% else %}
-        User
-      {% endif %}
-    </td>
-    <td>
-      <table class="table table-borderless mb-0 d-flex align-items-center justify-content-start">
-      <tr>
-        <td>
-        {% if not user.is_superuser or request.user.is_superuser %}
-          <a href="{% url 'users:user_edit' user.pk %}" class="btn btn-sm btn-primary">Edit</a>
-        {% else %}
-          <span class="text-muted">Restricted</span>
-        {% endif %}
-        </td>
-        <td>
-        {% if not user.is_superuser or request.user.is_superuser %}
-          <a href="{% url 'users:user_delete' user.pk %}" class="btn btn-sm btn-danger">Delete</a>
-        {% endif %}
-        </td>
-        <td>
-        {% if not user.is_superuser or request.user.is_superuser %}
-          {% if user.is_staff %}
-          {% if request.user.is_superuser %}
-            <a href="{% url 'users:promote_user' user.pk %}" class="btn btn-sm btn-warning">revoke admin</a>
-          {% endif %}
-          {% else %}
-          <a href="{% url 'users:promote_user' user.pk %}" class="btn btn-sm btn-success">promote to admin</a>
-          {% endif %}
-        {% endif %}
-        </td>
-        <td>
-        {% if not user.is_superuser or request.user.is_superuser %}
-          {% if user.is_blocked %}
-          <a href="{% url 'users:toggle_block' user.pk %}" class="btn btn-sm btn-primary">unblock</a>
-          {% else %}
-          <a href="{% url 'users:toggle_block' user.pk %}" class="btn btn-sm btn-danger">block</a>
-          {% endif %}
-        {% endif %}
-        </td>
-      </tr>
-      </table>
-    </td>
-  </tr>
-{% endfor %}
-
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table align-middle">
+      <thead class="table-light">
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Is Admin</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+       {% for user in users %}
+        <tr {% if user.is_superuser or user.is_staff %} style="color:red;" {% endif %}>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            {% if user.is_staff or user.is_superuser %}
+              Admin
+            {% else %}
+              User
+            {% endif %}
+          </td>
+          <td>
+            <div class="d-flex flex-wrap gap-1">
+              {% if not user.is_superuser or request.user.is_superuser %}
+                <a href="{% url 'users:user_edit' user.pk %}" class="btn btn-sm btn-primary">Edit</a>
+              {% else %}
+                <span class="text-muted">Restricted</span>
+              {% endif %}
+              {% if not user.is_superuser or request.user.is_superuser %}
+                <a href="{% url 'users:user_delete' user.pk %}" class="btn btn-sm btn-danger">Delete</a>
+              {% endif %}
+              {% if not user.is_superuser or request.user.is_superuser %}
+                {% if user.is_staff %}
+                  {% if request.user.is_superuser %}
+                    <a href="{% url 'users:promote_user' user.pk %}" class="btn btn-sm btn-warning px-3">Revoke admin</a>
+                  {% endif %}
+                {% else %}
+                  <a href="{% url 'users:promote_user' user.pk %}" class="btn btn-sm btn-success">Promote to admin</a>
+                {% endif %}
+              {% endif %}
+              {% if not user.is_superuser or request.user.is_superuser %}
+                {% if user.is_blocked %}
+                  <a href="{% url 'users:toggle_block' user.pk %}" class="btn btn-sm btn-primary">Unblock</a>
+                {% else %}
+                  <a href="{% url 'users:toggle_block' user.pk %}" class="btn btn-sm btn-danger">Block</a>
+                {% endif %}
+              {% endif %}
+            </div>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
 {% endblock %}

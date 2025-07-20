@@ -21,7 +21,7 @@ def home(request):
     if tag_query:
         posts = posts.filter(tags__name__icontains=tag_query).distinct()
 
-    paginator = Paginator(posts, 5)
+    paginator = Paginator(posts, 6)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 

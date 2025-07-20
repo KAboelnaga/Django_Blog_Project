@@ -14,57 +14,165 @@
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-      <span class="navbar-brand">Dashboard</span>
+      <span class="navbar-brand ms-2">Dashboard</span>
     </nav>
 
     <!-- Sidebar -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4" style="position: fixed; top: 0; bottom: 0; left: 0; width: 250px;">
       <a href="/dashboard" class="brand-link">
-        <span class="brand-text font-weight-light">Admin Panel</span>
+      <span class="brand-text font-weight-light">Admin Panel</span>
       </a>
       <div class="sidebar">
-        <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview">
-            <li class="nav-item">
-            <a href="{% url 'users:users_list' %}" class="nav-link">
-                <i class="nav-icon fas fa-users"></i>
-                <p>Users</p>
-            </a>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'blogs:posts_list' %}" class="nav-link">
-                <i class="nav-icon fas fa-pencil-alt"></i>
-                <p>Posts</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'blogs:categories_list' %}" class="nav-link">
-                <i class="nav-icon fas fa-folder"></i>
-                <p>Categories</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'forbidden_words_list' %}" class="nav-link">
-                <i class="nav-icon fas fa-ban"></i>
-                <p>Forbidden Words</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'blogs:tags_list' %}" class="nav-link">
-                <i class="nav-icon fas fa-tags"></i>
-                <p>Tags</p>
-              </a>
-            </li>
-          </ul>
-        </nav>
+      <nav class="mt-2"></nav>
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview">
+        <li class="nav-item">
+        <a href="{% url 'users:users_list' %}" class="nav-link">
+          <i class="nav-icon fs-4 fas fa-users"></i>
+          <p class="fs-5 ">Users</p>
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'blogs:posts_list' %}" class="nav-link">
+          <i class="nav-icon fs-4 fas fa-pencil-alt"></i>
+          <p class="fs-5 ">Posts</p>
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'blogs:categories_list' %}" class="nav-link">
+          <i class="nav-icon fs-4 fas fa-folder"></i>
+          <p class="fs-5 ">Categories</p>
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'forbidden_words_list' %}" class="nav-link">
+          <i class="nav-icon fs-4 fas fa-ban"></i>
+          <p class="fs-5 ">Forbidden Words</p>
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'blogs:tags_list' %}" class="nav-link">
+          <i class="nav-icon fs-4 fas fa-tags"></i>
+          <p class="fs-5 ">Tags</p>
+        </a>
+        </li>
+      </ul>
+      </nav>
       </div>
+      <style>
+      @media (max-width: 767.98px) {
+        .main-sidebar .nav-link p,
+        .main-sidebar .brand-text {
+        font-size: 1.25rem !important;
+        }
+     
+      }
+      </style>
     </aside>
 
-    <div class="content-wrapper p-4">
+    <div class="content-wrapper p-4" style="margin-left: 250px;">
       {% block content %}
       <h1>Welcome to Admin Dashboard</h1>
+      <div class="row mt-4">
+        <div class="col-6">
+          <div class="small-box bg-info">
+        <div class="inner">
+          <h3>{{ users_count }}</h3>
+          <p>Users</p>
+        </div>
+        <div class="icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <a href="{% url 'users:users_list' %}" class="small-box-footer">
+          More info <i class="fas fa-arrow-circle-right"></i>
+        </a>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="small-box bg-success">
+        <div class="inner">
+          <h3>{{ posts_count }}</h3>
+          <p>Posts</p>
+        </div>
+        <div class="icon">
+          <i class="fas fa-pencil-alt"></i>
+        </div>
+        <a href="{% url 'blogs:posts_list' %}" class="small-box-footer">
+          More info <i class="fas fa-arrow-circle-right"></i>
+        </a>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="small-box bg-warning">
+        <div class="inner">
+          <h3>{{ categories_count }}</h3>
+          <p>Categories</p>
+        </div>
+        <div class="icon">
+          <i class="fas fa-folder"></i>
+        </div>
+        <a href="{% url 'blogs:categories_list' %}" class="small-box-footer">
+          More info <i class="fas fa-arrow-circle-right"></i>
+        </a>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="small-box bg-danger">
+        <div class="inner">
+          <h3>{{ tags_count }}</h3>
+          <p>Tags</p>
+        </div>
+        <div class="icon">
+          <i class="fas fa-tags"></i>
+        </div>
+        <a href="{% url 'blogs:tags_list' %}" class="small-box-footer">
+          More info <i class="fas fa-arrow-circle-right"></i>
+        </a>
+          </div>
+        </div>
+      </div>
+     
       {% endblock %}
     </div>
+
+    <style>
+      @media (max-width: 767.98px) {
+      .main-sidebar {
+        position: fixed;
+        left: -250px;
+        transition: left 0.3s;
+        z-index: 1050;
+      }
+      .main-sidebar.active {
+        left: 0;
+      }
+      .content-wrapper {
+        margin-left: 0 !important;
+      }
+      .sidebar-toggle-btn {
+        display: inline-block !important;
+      }
+      }
+      .sidebar-toggle-btn {
+      display: none;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1100;
+      background: #343a40;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      }
+    </style>
+    <button class="sidebar-toggle-btn" onclick="toggleSidebar()">
+      <i class="fas fa-bars"></i>
+    </button>
+    <script>
+      function toggleSidebar() {
+      document.querySelector('.main-sidebar').classList.toggle('active');
+      }
+    </script>
 
   </div>
 

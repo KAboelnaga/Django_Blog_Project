@@ -5,9 +5,19 @@
 
       {% include 'subscriptions/category_sidebar.html' %}
     
+    <style>
+          .card-hover {
+            transition: box-shadow 0.3s, background 0.3s ,transform 0.3s;
+          }
+          .card-hover:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.18), 0 1.5px 4px rgba(0,0,0,0.12);
+            background: #f8f9fa;
+            transform: translateY(-10px);
+          }
+          </style>
 
     <!-- Posts Section -->
-    <div class="mx-5 col-md-6">
+    <div class="mx-5 col-md-9">
       {% if selected_category %}
       <h1 class="text-primary mb-4">Posts in "{{ selected_category.name }}"</h1>
       {% endif %}
@@ -21,26 +31,29 @@
             {% endfor %}
           {% endif %}
         <div class="mb-4">
-          <form method="get" class="d-flex" style="max-width: 300px;">
+          <form method="get" class="d-flex" >
             <input type="text" name="tag" class="form-control me-2" placeholder="Search by tag" value="{{ tag_query|default_if_none:'' }}">
             <button type="submit" class="btn btn-primary">Search</button>
           </form>
         </div>
-        {% for post in page_obj %}
-        <div class="  mb-4">
-          <div class="card post-card h-100 align-items-center">
-            <a href="{{ post.get_absolute_url }}">
-              <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}">
-            </a>
-            <div class="card-body w-100 mb-2">
-                <h5 class="card-title ">{{ post.title }}</h5>
+        <div class="row mb-4">
+        <div class="row g-4">
+          {% for post in page_obj %}
+            <div class="col-12 col-md-6 col-lg-4 card-hover pt-3">
+            <div class="card post-card align-items-center" style="height: 370px;">
+              <a href="{{ post.get_absolute_url }}">
+              <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}" style="width: 200px; height: 200px; object-fit: cover;">
+              </a>
+              <div class="card-body w-100 mb-2 d-flex flex-column justify-content-between" style="height: 140px;">
+                <h5 class="card-title">{{ post.title }}</h5>
                 <p class="card-text text-muted">{{ post.created_at|date:"F j, Y" }}</p>
                 {% include 'partials/tags.html' %}
+              </div>
             </div>
-          </div>
+            </div>
+          {% endfor %}
         </div>
-        
-        {% endfor %}
+        </div>
       </div>
 
       <!-- Pagination -->

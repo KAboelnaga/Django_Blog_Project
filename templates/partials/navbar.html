@@ -2,55 +2,85 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="{% url 'blogs:home' %}">MyBlog</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm position-fixed fixed-top" style="z-index: 1040;">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="{% url 'blogs:home' %}">MyBlog</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'blogs:home' %}">Home</a>
-          </li>
-        </ul>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+      <a class="nav-link" href="{% url 'blogs:home' %}">Home</a>
+      </li>
+    </ul>
 
-        <ul class="navbar-nav">
-          {% if user.is_authenticated %}
-            <li class="nav-item">
-              <span class="nav-link">Hello, <strong>{{ user.username }}</strong></span>
-            </li>
-            {% if user.is_admin or user.is_superuser %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'dashboard_home' %}">Admin Panel</a>
-            </li>
-            {% endif %}
-            
-            <li class="nav-item">
-              <a class="btn btn-outline-danger btn-sm ms-2" href="{% url 'users:logout' %}">Logout</a>
-            </li>
-          {% else %}
-            <li class="nav-item">
-              <a class="btn btn-outline-primary btn-sm me-2" href="{% url 'users:login' %}">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn btn-primary btn-sm" href="{% url 'users:register' %}">Register</a>
-            </li>
-          {% endif %}
-        </ul>
-      </div>
+    <ul class="navbar-nav">
+      {% if user.is_authenticated %}
+      <li class="nav-item"></li>
+        <span class="nav-link">Hello, <strong>{{ user.username }}</strong></span>
+      </li>
+      {% if user.is_admin or user.is_superuser %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'dashboard_home' %}">Admin Panel</a>
+      </li>
+      {% endif %}
+      
+      <li class="nav-item">
+        <a class="btn btn-outline-danger btn-sm ms-2" href="{% url 'users:logout' %}">Logout</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="btn btn-outline-primary btn-sm me-2" href="{% url 'users:login' %}">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-primary btn-sm" href="{% url 'users:register' %}">Register</a>
+      </li>
+      {% endif %}
+    </ul>
     </div>
+  </div>
   </nav>
 
   <style>
-    .nav-link {
-      color: #fff !important;
+  body {
+    padding-top: 56px; /* Height of navbar */
+  }
+  @media (min-width: 992px) {
+    .with-sidebar {
+    margin-left: 250px; /* Adjust to your sidebar width */
     }
+    .sidebar {
+    position: fixed;
+    top: 56px; /* Height of navbar */
+    left: 0;
+    width: 250px;
+    height: 100%;
+    z-index: 1030;
+    }
+  }
+  @media (max-width: 991.98px) {
+    .sidebar {
+    position: static;
+    width: 100%;
+    top: 0;
+    z-index: 1030;
+    }
+    .with-sidebar {
+    margin-left: 0;
+    }
+    .navbar.fixed-top {
+    position: static;
+    }
+  }
+  .nav-link {
+    color: #fff !important;
+  }
 
-    .nav-link:hover {
-      color: #ccc !important;
-      text-decoration: none;
-      transition: 1s ease;
-    }
+  .nav-link:hover {
+    color: #ccc !important;
+    text-decoration: none;
+    transition: 1s ease;
+  }
   </style>
