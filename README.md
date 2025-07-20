@@ -1,29 +1,29 @@
-# 📌Blog Platform
+# 📌 Django Blog Project
 
- ### ✅ Overview
+ ## ✅ Overview
 A blog platform built with Django, featuring user authentication, category subscriptions with email notifications, post interactions (like, dislike, comments), and an admin panel for full CRUD operations.
 
-🚀 Main Features
+##🚀 Main Features
 
-🔹 Landing Page
+###🔹 Landing Page
 
-- Header
+###- Header
   - Login/Register links (or Logout if authenticated).
   - Admins see an additional "Manage Blog" link.
 
 
--Sidebar (Categories)
+###-Sidebar (Categories)
   - Lists all categories with Subscribe/Unsubscribe buttons.
   - Redirects to posts filtered by category.
   - Email confirmation upon subscription.
 
 
--Body (Top Posts)
+###-Body (Top Posts)
   -Displays top posts sorted by publish date.
   -Clicking a post image redirects to its page.
 
 
--Footer (Pagination)
+###-Footer (Pagination)
   - Displays 5 posts per page with Next/Previous buttons.
 
 ![Landing Page](Blog_Screenshots/home.jpeg)
