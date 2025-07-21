@@ -81,19 +81,21 @@ A blog platform built with **Django**, featuring:
 
 ### 🔹 Post Page
 
+
  - Content: Title, Image, Content, Category, Tags, Comments.
 
    
 ![post Page](Blog_Screenshots/post.png)
 
 
-### - Interactions:
+ - **Interactions:**
 
-  - Add comments & replies (signed-in users only).
-  - Inappropriate words censored automatically (stupid → ******).
-  - Like/Dislike counter .
+     - Add comments & replies (signed-in users only).
+     - Inappropriate words censored automatically (stupid → ******).
+     - Like/Dislike counter .
 
 ![comments Page](Blog_Screenshots/comments.png)
+
 
 
 
@@ -104,12 +106,13 @@ A blog platform built with **Django**, featuring:
 
 ![user Page](Blog_Screenshots/normal_user.png)
 
- - Search by tag or title.
+
+#### - Search by tag or title.
 
 ![search Page](Blog_Screenshots/search.png)
 
 
-  - Like, dislike, comment, and reply (if logged in).
+ #### - Like, dislike, comment, and reply (if logged in).
 
 ![search Page](Blog_Screenshots/logout_comment.png)
     
@@ -124,10 +127,10 @@ A blog platform built with **Django**, featuring:
 ![admin Page](Blog_Screenshots/admin_panel.png)
 
 
-### - Admin Can perform all CRUD operations on posts
+### - **Admin Can perform all CRUD operations on posts**
   ![admin Page](Blog_Screenshots/crud_users.png)
   ![admin Page](Blog_Screenshots/create_post.jpeg)
-### -  Admin Can perform all CRUD operations on categories
+### -  **Admin Can perform all CRUD operations on categories**
   ![admin Page](Blog_Screenshots/crud_categories.png)
 ### -  Admin Can perform all CRUD operations on forbidden words
    ![admin Page](Blog_Screenshots/forbidden_list.jpeg)
