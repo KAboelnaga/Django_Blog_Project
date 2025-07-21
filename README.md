@@ -88,7 +88,7 @@ A blog platform built with **Django**, featuring:
 ![post Page](Blog_Screenshots/post.png)
 
 
- ###- **Interactions:**
+- **Interactions:**
 
      - Add comments & replies (signed-in users only).
      - Inappropriate words censored automatically (stupid → ******).
