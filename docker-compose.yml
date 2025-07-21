@@ -18,6 +18,7 @@ services:
       - EMAIL_HOST_PASSWORD=dummy-password
     env_file:
       - .env
+    entrypoint: ["/app/entrypoint.sh"]
 
   db:
     image: postgres:16
