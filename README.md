@@ -128,14 +128,18 @@ A blog platform built with **Django**, featuring:
 
 
  - **Admin Can perform all CRUD operations on posts**
+   
   ![admin Page](Blog_Screenshots/crud_users.png)
   ![admin Page](Blog_Screenshots/create_post.jpeg)
  -  **Admin Can perform all CRUD operations on categories**
+   
   ![admin Page](Blog_Screenshots/crud_categories.png)
-### -  Admin Can perform all CRUD operations on forbidden words
+ -  **Admin Can perform all CRUD operations on forbidden words**
+   
    ![admin Page](Blog_Screenshots/forbidden_list.jpeg)
    ![add forbidden Page](Blog_Screenshots/add_forbidden.png)
-### -  Admin Can perform all CRUD operations on users.
+ -  **Admin Can perform all CRUD operations on users.**
+   
    ![admin Page](Blog_Screenshots/crud_users.png)
  
 
