@@ -13,7 +13,7 @@ A blog platform built with **Django**, featuring:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/your-repo.git
+   git clone https://github.com/KAboelnaga/Django_Blog_Project.git
    cd your-repo
 2. **Create & activate a virtual environment:**
    ```bash
