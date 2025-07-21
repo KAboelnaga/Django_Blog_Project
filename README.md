@@ -16,17 +16,21 @@ A blog platform built with **Django**, featuring:
    git clone https://github.com/your-username/your-repo.git
    cd your-repo
 2. **Create & activate a virtual environment:**
+   ```bash
    python -m venv venv
    source venv/bin/activate   # (Linux/Mac)
    venv\Scripts\activate      # (Windows)
 
 3. **Install dependencies:**
+   ```bash
    pip install -r requirements.txt
 
 4. **Apply migrations:**
+   ```bash
    python manage.py migrate
 
 5. **Run the development server:**
+   ```bash
    python manage.py runserver
 
 
@@ -36,23 +40,23 @@ A blog platform built with **Django**, featuring:
 ### 🔹 Landing Page
 
  - **Header**
-  - Login/Register links (or Logout if authenticated).
-  - Admins see an additional "Manage Blog" link.
+     - Login/Register links (or Logout if authenticated).
+     - Admins see an additional "Manage Blog" link.
 
 
  - **Sidebar (Categories)**
-  - Lists all categories with Subscribe/Unsubscribe buttons.
-  - Redirects to posts filtered by category.
-  - Email confirmation upon subscription.
+     - Lists all categories with Subscribe/Unsubscribe buttons.
+     - Redirects to posts filtered by category.
+     - Email confirmation upon subscription.
 
 
  - **Body (Top Posts)**
-  - Displays top posts sorted by publish date.
-  - Clicking a post image redirects to its page.
+     - Displays top posts sorted by publish date.
+     - Clicking a post image redirects to its page.
 
 
  - **Footer (Pagination)**
-  - Displays 5 posts per page with Next/Previous buttons.
+     - Displays 5 posts per page with Next/Previous buttons.
 
 ![Landing Page](Blog_Screenshots/home.jpeg)
 
