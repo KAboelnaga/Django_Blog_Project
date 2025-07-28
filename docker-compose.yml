@@ -7,7 +7,7 @@ services:
     volumes:
       - .:/app
       - static_volume:/app/staticfiles
-      - media_volume:/app/media
+      - ./media:/app/media
     ports:
       - "8000:8000"
     depends_on:
@@ -18,7 +18,7 @@ services:
       - EMAIL_HOST_PASSWORD=dummy-password
     env_file:
       - .env
-    entrypoint: ["/app/entrypoint.sh"]
+    entrypoint: ["/app/docker/entrypoint.sh"]
 
   db:
     image: postgres:16
